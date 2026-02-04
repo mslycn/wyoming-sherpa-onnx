@@ -1,36 +1,64 @@
-# This is a basic workflow to help you get started with Actions
+name: Build ARM64 FunASR Wyoming via sherpa-onnx
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "funasr-wyoming-sherpa-onnx" ]
+    paths:                # GitHub Actions设置只有在 Dockerfile 或 server.py 发生变化时才触发构建
+      - Dockerfile   
+      - docker-publish.yml
+      - server.py
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+    # Enables building foreign architectures (e.g., arm64 on amd64 runner)
+    # QEMU：在 x86 runner 上编译 arm64 镜像
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      with:
+        platforms: amd64,arm64
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    # buildx：支持 multi-arch build
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # push：推送到 GHCR
+    # tags：同时生成 latest 和 vX.X.X
+    - name: Build and Push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: |
+          ghcr.io/${{ github.repository_owner }}/wyoming-funasr-onnx:latest
+          ghcr.io/${{ github.repository_owner }}/wyoming-funasr-onnx:${{ github.ref_name }}
+
+    # GitHub Actions 里调试容器退出
+    - name: Run container
+      run: |
+        docker run --rm ghcr.io/mslycn/wyoming-funasr-onnx:main || true
+        docker ps -a
+
+    # logs
+    - name: Show logs
+      run: docker logs $(docker ps -aq) || true     
+
+          
