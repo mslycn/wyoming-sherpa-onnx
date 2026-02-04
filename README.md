@@ -1,6 +1,6 @@
 # wyoming-funasr-onnx
 
-Wyoming Protocol stt Server for home assistant voice assistant.
+Wyoming protocol server for the funasr speech to text system.
 
 ## Features
 
@@ -8,8 +8,11 @@ Non-Streaming WebSocket Server
 
 CPU-only version of sherpa-onnx
 
-
-
+## Docker Image
+~~~
+docker run -it -p 10300:10300 -v /path/to/local/data:/data ghcr.io/mslycn/wyoming-funasr-onnx:main \
+    --model SenseVoiceSmall --language zh
+~~~
 
 
 ## Dockerfile
