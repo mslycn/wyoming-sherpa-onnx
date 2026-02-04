@@ -3,12 +3,7 @@ name: Build ARM64 FunASR Wyoming via sherpa-onnx
 on:
   push:
     branches: [ "main" ]
-    
-    # GitHub Actions设置只有在 Dockerfile 或 server.py 发生变化时才触发构建
-    paths:               
-      - 'Dockerfile'   
-      - 'docker-publish.yml'
-      - 'server.py'
+
 
 jobs:
   build:
