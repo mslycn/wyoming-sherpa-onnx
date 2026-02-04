@@ -1,6 +1,6 @@
 # wyoming-funasr-onnx
 
-
+Wyoming Protocol stt Server for home assistant voice assistant.
 
 ## Features
 
