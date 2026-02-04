@@ -4,14 +4,17 @@
 
 Non-Streaming WebSocket Server
 
+CPU-only version of sherpa-onnx
 
 
 
 
 
-## 
+## Dockerfile
  install the Python package sherpa-onnx
- 
+~~~
+pip3 install sherpa-onnx sherpa-onnx-bin
+~~~
 
 
 
