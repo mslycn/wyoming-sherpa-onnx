@@ -65,13 +65,13 @@ _LOGGER.info("%s - start excute sherpa-onnx" % datetime.datetime.now().strftime(
 start_model = time.time()
 
 # 请确保路径指向你下载的模型文件夹
-MODEL_DIR = "/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09"
+MODEL_DIR = "/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
 
 def create_recognizer():
     _LOGGER.info(f"Loading Sherpa-ONNX model from {MODEL_DIR}")
     # 参数配置
     recognizer = sherpa_onnx.OfflineRecognizer.from_sense_voice(
-        model=f"{MODEL_DIR}/model.int8.onnx",
+        model=f"{MODEL_DIR}/model.onnx",
         tokens=f"{MODEL_DIR}/tokens.txt",
         num_threads=4,      # 适配树莓派核心数
 
