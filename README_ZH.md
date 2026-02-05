@@ -3,6 +3,15 @@
 
 项目组合Wyoming 协议、Sherpa-ONNX 引擎 和 FunASR 模型。
 
+
+rpi5 8G
+
+esp32box3b
+
+home assistant docker 2025.11.5
+
+
+
 ## Quick Start
 
 
