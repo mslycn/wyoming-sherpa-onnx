@@ -3,6 +3,18 @@
 
 项目组合Wyoming 协议、Sherpa-ONNX 引擎 和 FunASR 模型。
 
+## Quick Start
+
+
+
+sherpa-onnx 
+
+SenseVoiceSmall FP32 onnx模型
+
+SenseVoiceSmall 官方模型来源
+https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
+
+
 output
 ~~~
 2026-02-05 22:38:34.029 - Wyoming Sherpa-ONNX Server started on port 10900
@@ -113,3 +125,19 @@ source: https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-
 ## Speed on rpi5 cpu
 
 - 4 threads
+
+
+
+## server.py
+
+SenseVoiceSmall + sherpa-onnx 标准加载方式
+~~~
+import sherpa_onnx
+
+recognizer = sherpa_onnx.OfflineRecognizer.from_sense_voice(
+    model="./sense-voice/model.onnx",
+    tokens="./sense-voice/tokens.txt",
+    use_itn=True,
+)
+
+~~~
