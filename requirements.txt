@@ -1,0 +1,11 @@
+# Install with: pip3 install -r requirements_wyoming.txt
+
+# Wyoming Protocol
+wyoming==1.8.0
+
+# herpa-onnx
+sherpa-onnx 
+sherpa-onnx-bin
+
+# Audio Processing
+numpy==2.4.2
