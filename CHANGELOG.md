@@ -1,3 +1,12 @@
+20250206
+
+sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
+
+准确率低
+
+int8 量化会将 32 位的浮点数压缩到 8 位，虽然速度飞快，但在中文这种同音词、近音词极多的语言里，会丢失音调的细微特征（这就是为什么“火”会变成“花”）。
+
+
 20260205 
 
 Hard-coded model dir for docker run test
