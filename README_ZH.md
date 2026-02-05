@@ -5,3 +5,18 @@
 
 
 下载模型文件
+
+
+### 如何确认模型精度是 FP32
+~~~
+import onnx
+
+model = onnx.load("model.onnx")
+print(model.graph.input[0].type.tensor_type.elem_type)
+
+~~~
+output
+~~~
+1 = FP32
+
+~~~
