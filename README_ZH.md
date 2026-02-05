@@ -7,6 +7,9 @@
 下载模型文件
 
 
+## 准确率
+
+准确率与模型精度有关
 
 ### 如何确认模型精度是 FP32
 ~~~
@@ -22,7 +25,7 @@ output
 
 ~~~
 
-### 下载模型文件
+### 下载模型文件 Download model
 ~~~
 cd /funasr-wyoming-sherpa-onnx
 
@@ -34,3 +37,5 @@ rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
 source: https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17
 
 ## Speed on rpi5 cpu
+
+- 4 threads
