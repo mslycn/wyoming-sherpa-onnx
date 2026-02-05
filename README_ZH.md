@@ -6,7 +6,7 @@
 
 rpi5 8G
 
-esp32box3b
+esp32-s3-box3b
 
 home assistant docker 2025.11.5
 
