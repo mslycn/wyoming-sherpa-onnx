@@ -34,6 +34,41 @@ tar xvf sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
 rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
 ~~~
 
+~~~
+raspberrypi:/funasr-wyoming-sherpa-onnx# tree -L 2 ./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
+./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
+├── model.onnx
+├── README.md
+├── test_wavs
+│   ├── en.wav
+│   ├── ja.wav
+│   ├── ko.wav
+│   ├── yue-0.wav
+│   ├── yue-10.wav
+│   ├── yue-11.wav
+│   ├── yue-12.wav
+│   ├── yue-13.wav
+│   ├── yue-14.wav
+│   ├── yue-15.wav
+│   ├── yue-16.wav
+│   ├── yue-17.wav
+│   ├── yue-1.wav
+│   ├── yue-2.wav
+│   ├── yue-3.wav
+│   ├── yue-4.wav
+│   ├── yue-5.wav
+│   ├── yue-6.wav
+│   ├── yue-7.wav
+│   ├── yue-8.wav
+│   ├── yue-9.wav
+│   ├── yue.wav
+│   └── zh.wav
+└── tokens.txt
+
+2 directories, 26 files
+
+~~~
+
 source: https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17
 
 ## Speed on rpi5 cpu
