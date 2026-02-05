@@ -40,6 +40,15 @@ docker run -d \
   ghcr.io/mslycn/wyoming-funasr-onnx:main
 ~~~
 
+
+
+error
+
+- RuntimeError: No graph was found in protobuf
+
+模型文件路径设置错误
+
+
 run ok
 
 源文件：https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step1-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.py
