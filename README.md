@@ -8,6 +8,19 @@ Non-Streaming WebSocket Server
 
 CPU-only version of sherpa-onnx
 
+## How to use
+
+step 1. Docker pull
+
+step 2. download pre-trained  model(SenseVoice)
+
+step 3. Docker run
+
+step 4. Integration 
+
+step 5. Voice Assistant
+
+
 ## Docker Image  Debug
 
 ~~~
