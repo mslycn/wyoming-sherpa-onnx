@@ -6,11 +6,13 @@
 ## Environment
 rpi5 8G
 
-esp32-s3-box3b
+esp32-s3-box3b：负责语音采集
 
 home assistant docker 2025.11.5
 
+wyoming-funasr-onnx(RPi5)：负责 STT
 
+Wyoming-Piper (RPi5)：负责 TTS
 
 ## Quick Start
 
