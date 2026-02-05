@@ -8,10 +8,23 @@ Non-Streaming WebSocket Server
 
 CPU-only version of sherpa-onnx
 
-## Docker Image
+## Docker Image  Debug
+
+~~~
+docker pull ghcr.io/mslycn/wyoming-funasr-onnx:main
+~~~
+
 ~~~
 docker run -it -p 10300:10300 -v /path/to/local/data:/data ghcr.io/mslycn/wyoming-funasr-onnx:main \
     --model SenseVoiceSmall --language zh
+~~~
+
+~~~
+docker run -d \
+  --name "funasr" \
+  -v /funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09:/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 \
+  -p 10900:10900 \
+  ghcr.io/mslycn/wyoming-funasr-onnx:main
 ~~~
 
 
