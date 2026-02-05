@@ -3,7 +3,7 @@
 
 项目组合Wyoming 协议、Sherpa-ONNX 引擎 和 FunASR 模型。
 
-
+## Environment
 rpi5 8G
 
 esp32-s3-box3b
@@ -18,7 +18,7 @@ home assistant docker 2025.11.5
 
 sherpa-onnx 
 
-SenseVoiceSmall FP32 onnx模型
+sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 - SenseVoiceSmall FP32 onnx模型
 
 SenseVoiceSmall 官方模型来源
 https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
