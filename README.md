@@ -2,21 +2,37 @@
 
 Wyoming protocol server for the funasr speech to text system.
 
+Wyoming FunASR ONNX is a lightweight Speech-to-Text (STT) server that bridges FunASR ONNX models with the Wyoming protocol, enabling seamless integration with Home Assistant voice assistant.
+
+It provides fast, local, and privacy-friendly speech recognition powered by FunASR ONNX models.
+
 ## Features
 
 Non-Streaming WebSocket Server
 
 CPU-only version of sherpa-onnx
 
+Multilingual FunASR ONNX models： SenseVoice Small->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+
 ## How to use
 
 step 1. Docker pull
+~~~
+
+~~~
 
 step 2. download pre-trained  model(SenseVoice)
 
 step 3. Docker run
+~~~
+docker run -d \
+  --name wyoming-funasr-onnx \
+  -p 10300:10300 \
+  ghcr.io/mslycn/wyoming-funasr-onnx:latest
 
-step 4. Integration 
+~~~
+
+step 4. Integration with Home Assistant 
 
 step 5. Voice Assistant
 
