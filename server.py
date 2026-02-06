@@ -1,9 +1,9 @@
 
 #!/usr/bin/env python3
 """
-Wyoming Protocol ServerTest
+Wyoming Protocol Server Test
 
-一个基于 Wyoming 协议 的语音转文字（STT）服务端脚本，使用阿里开源的 SenseVoiceSmall 模型。
+一个基于 Wyoming 协议 的语音转文字（STT）服务端脚本，使用阿里开源的 SenseVoiceSmall onnx模型。
 
 step 1. Install sherpa-onnx
 pip3 install sherpa-onnx
