@@ -165,7 +165,7 @@ docker run --rm -m 4g ghcr.io/mslycn/funasr-wyoming:main
 
 ## server.py
 
-SenseVoiceSmall + sherpa-onnx 标准加载方式
+SenseVoiceSmall + sherpa-onnx 标准加载方式及完整最小可运行示例
 ~~~
 import sherpa_onnx
 
@@ -175,6 +175,13 @@ recognizer = sherpa_onnx.OfflineRecognizer.from_sense_voice(
     use_itn=True,
 )
 
+stream = recognizer.create_stream()
+
+stream.accept_waveform(16000, samples)
+
+recognizer.decode_stream(stream)
+
+print(stream.result.text)
 ~~~
 
 
