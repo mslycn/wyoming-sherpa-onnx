@@ -1,8 +1,10 @@
-20250206
+20250207
+
+## 调整为使用FP32精度模型
 
 发现识别准确率 不及 原生 funasr。经查，使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型，音频精度被转换成了8位。造成开火，成开活，等。
 
-决定调整位FP32精度模型
+决定调整为FP32精度模型
 
 sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
 
@@ -13,6 +15,8 @@ https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/
 
 20250206
 
+## 使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型
+
 sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
 
 准确率低
@@ -22,7 +26,7 @@ int8 量化会将 32 位的浮点数压缩到 8 位，虽然速度飞快，但�
 
 20260205 
 
-Hard-coded model dir for docker run test
+## Hard-coded model dir for docker run test
 
 不改动 server.py 的代码，在启动 Docker 时，把宿主机的模型目录“伪装”成server.py内的模型目录路径，直接测试。 run test ok  20260205
 
