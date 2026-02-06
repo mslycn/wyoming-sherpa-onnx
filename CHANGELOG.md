@@ -15,7 +15,7 @@ https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/
 
 20250206
 
-## 使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型
+## 使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型  FP16 / INT8
 
 sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
 
