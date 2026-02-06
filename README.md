@@ -8,11 +8,13 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 ## Features
 
-Non-Streaming WebSocket Server
+- Full Wyoming protocol compliance
 
-CPU-only version of sherpa-onnx
+- Non-Streaming WebSocket Server
 
-Multilingual FunASR ONNX models： SenseVoice Small->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+- CPU-only version of sherpa-onnx
+
+- Multilingual FunASR ONNX models： SenseVoice Small->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
 
 ## How to use
 
