@@ -170,3 +170,14 @@ recognizer = sherpa_onnx.OfflineRecognizer.from_sense_voice(
 )
 
 ~~~
+
+
+FunASR 官方支持使用 funasr-export 工具将模型导出为 ONNX 格式
+
+~~~
+# 安装导出工具
+pip install -U "funasr[export]"
+# 导出模型
+python -m funasr.export.export_model --model-name iic/SenseVoiceSmall --export-dir ./export --type onnx
+
+~~~
