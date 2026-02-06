@@ -16,6 +16,13 @@ Wyoming-Piper (RPi5)：负责 TTS
 
 ## Quick Start
 
+安装Python环境
+
+安装相关的库
+
+下载语音识别模型到本地
+
+简易代码实现语音识别
 
 
 sherpa-onnx 
@@ -87,7 +94,7 @@ output
 
 ~~~
 
-### 下载模型文件 Download model
+### 下载模型文件 Download model  3.下载语音识别模型到本地
 ~~~
 cd /funasr-wyoming-sherpa-onnx
 
