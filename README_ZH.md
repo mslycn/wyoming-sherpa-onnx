@@ -16,13 +16,21 @@ Wyoming-Piper (RPi5)：负责 TTS
 
 ## Quick Start
 
-安装Python环境
+1. 安装Python环境
 
-安装相关的库
+2. 安装依赖项
+   
+安装sherpa-onnx
 
-下载语音识别模型到本地
+安装wyoming==1.8.0： wyoming协议
 
-简易代码实现语音识别
+安装numpy : 音频处理   
+
+3. 下载语音识别模型到本地
+
+4. 简易代码实现语音识别
+
+
 
 
 sherpa-onnx 
