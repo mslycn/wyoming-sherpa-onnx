@@ -38,10 +38,6 @@ SenseVoiceSmall FP32 onnx模型：sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-0
 
 sherpa-onnx 
 
-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 - SenseVoiceSmall FP32 onnx模型
-
-SenseVoiceSmall 官方模型来源
-https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
 
 
 output
@@ -105,7 +101,14 @@ output
 
 ~~~
 
-### 下载模型文件 Download model  3.下载语音识别模型到本地
+### 3.下载语音识别模型到本地 下载模型文件 Download model  
+
+1. sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 - SenseVoiceSmall FP32 onnx模型
+
+SenseVoiceSmall 官方模型来源
+https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
+
+2.download
 ~~~
 cd /funasr-wyoming-sherpa-onnx
 
