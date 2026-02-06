@@ -106,9 +106,11 @@ output
 1. sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 - SenseVoiceSmall FP32 onnx模型
 
 SenseVoiceSmall 官方模型来源
+
 https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
 
 2.download
+
 ~~~
 cd /funasr-wyoming-sherpa-onnx
 
@@ -120,7 +122,7 @@ rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
 ~~~
 raspberrypi:/funasr-wyoming-sherpa-onnx# tree -L 2 ./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
 ./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
-├── model.onnx
+├── model.onnx  ← FP32
 ├── README.md
 ├── test_wavs
 │   ├── en.wav
@@ -154,6 +156,7 @@ raspberrypi:/funasr-wyoming-sherpa-onnx# tree -L 2 ./sherpa-onnx-sense-voice-zh-
 
 source: https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17
 
+### Docker
 
 ~~~
 docker run --rm -m 4g ghcr.io/mslycn/funasr-wyoming:main
