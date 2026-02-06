@@ -20,15 +20,18 @@ Wyoming-Piper (RPi5)：负责 TTS
 
 2. 安装依赖项
    
-安装sherpa-onnx
+   安装sherpa-onnx
 
-安装wyoming==1.8.0： wyoming协议
+   安装wyoming==1.8.0： wyoming协议
 
-安装numpy : 音频处理   
+   安装numpy : 音频处理   
 
 3. 下载语音识别模型到本地
 
-4. 简易代码实现语音识别
+SenseVoiceSmall FP32 onnx模型：sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
+   
+
+5. 简易代码实现语音识别
 
 
 
