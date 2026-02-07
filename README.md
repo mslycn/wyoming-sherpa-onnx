@@ -25,6 +25,15 @@ docker pull ghcr.io/mslycn/wyoming-funasr-onnx:latest
 
 step 2. download pre-trained  model(SenseVoice)
 
+~~~
+cd /funasr-wyoming-sherpa-onnx
+
+wget https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
+tar xvf sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
+rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
+
+~~~
+
 step 3. Docker run
 ~~~
 docker run -d \
