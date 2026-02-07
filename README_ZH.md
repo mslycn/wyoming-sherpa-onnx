@@ -3,6 +3,9 @@
 
 项目组合Wyoming 协议、Sherpa-ONNX 引擎 和 FunASR onnx模型。
 
+## Prerequisites
+Ensure you have home assistant installed on your machine (Linux) and that it is running. 
+
 ## Environment
 rpi5 8G
 
