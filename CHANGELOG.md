@@ -12,6 +12,9 @@ run ok
 
 https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step2-server2-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.py
 
+server.py
+
+https://github.com/mslycn/wyoming-funasr-onnx/commit/a62a07064356108470b85c46d97993a6d6c99678
 
 20250206
 
