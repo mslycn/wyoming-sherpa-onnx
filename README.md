@@ -18,9 +18,9 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 ## How to use
 
-step 1. Docker pull
+step 1. Pull the Docker Image 
 ~~~
-
+docker pull ghcr.io/mslycn/wyoming-funasr-onnx:latest
 ~~~
 
 step 2. download pre-trained  model(SenseVoice)
