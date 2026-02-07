@@ -60,7 +60,10 @@ docker run -d \
 
 
 ## Dockerfile
- install the Python package sherpa-onnx
+
+Install system dependencies
+
+install the Python package sherpa-onnx
 ~~~
 pip3 install sherpa-onnx sherpa-onnx-bin
 ~~~
