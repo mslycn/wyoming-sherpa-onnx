@@ -6,9 +6,9 @@
 ## Environment
 rpi5 8G
 
-esp32-s3-box3b：负责语音采集
-
 home assistant docker 2025.11.5
+
+esp32-s3-box3b：负责语音采集，唤醒词 + VAD。
 
 wyoming-funasr-onnx(RPi5)：负责 STT
 
