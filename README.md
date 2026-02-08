@@ -16,6 +16,11 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 - Models: Multilingual FunASR ONNX models->SenseVoiceSmall->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
 
+## Prerequisites
+
+- A Linux machine  with Docker and Docker Compose installed.
+- A static local IP address for the host machine. 
+
 ## System Architecture
 
 ~~~
@@ -58,6 +63,12 @@ docker pull ghcr.io/mslycn/wyoming-funasr-onnx:latest
 
 step 2. download pre-trained  model(SenseVoice)
 
+Create Necessary Folders 
+
+~~~
+mkdir -p funasr-wyoming-sherpa-onnx
+~~~
+
 ~~~
 cd /funasr-wyoming-sherpa-onnx
 
@@ -67,7 +78,10 @@ rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.tar.bz2
 
 ~~~
 
-step 3. Docker run
+step 3.  Run the Container 
+
+Docker run
+
 ~~~
 docker run -d \
   --name wyoming-funasr-onnx \
