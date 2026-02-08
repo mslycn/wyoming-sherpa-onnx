@@ -12,9 +12,42 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 - Non-Streaming WebSocket Server
 
-- CPU-only version of sherpa-onnx
+- ASREngine: CPU-only version of sherpa-onnx
 
-- Multilingual FunASR ONNX models： SenseVoice Small->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+- Models: Multilingual FunASR ONNX models->SenseVoiceSmall->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+
+## System Architecture
+
+~~~
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│  HA WebSocket   │    │  Wyoming protocol│    │   sherpa-onnx   │
+│   Client        │◄──►│  ASR   Server    │◄──►│   Engine        │
+│                 │    │                  │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                │                        │
+                                ▼                        ▼
+                       ┌──────────────────┐    ┌─────────────────┐
+                       │ HAonnection      │    │  Model Files    │
+                       │  Manager         │    │  • SenseVoice   │
+                       │                  │    │  • Silero VAD   │
+                       └──────────────────┘    └─────────────────┘
+
+~~~
+
+## Project structre
+~~~
+funasr-wyoming-funasr-onnx/
+├── Dockerfile
+├── requirements.txt
+├── server.py
+├── entrypoint.sh
+├── models/
+│   └── sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+└── .github/
+    └── workflows/
+        └── docker-publish.yml
+
+~~~
 
 ## How to use
 
@@ -87,3 +120,6 @@ https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models
 Install the Python package sherpa-onnx 
 
 https://k2-fsa.github.io/sherpa/onnx/python/install.html#method-1-from-pre-compiled-wheels-cpu-only
+
+https://github.com/mawwalker/stt-server
+
