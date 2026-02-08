@@ -114,6 +114,10 @@ SenseVoiceSmall 官方模型来源
 
 https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
 
+Note
+
+模型说明: SenseVoiceSmall 模型来自 FunAudioLLM/SenseVoice 项目，已转换为 ONNX 格式用于 sherpa-onnx
+
 2.download
 
 ~~~
