@@ -14,7 +14,8 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 - ASREngine: CPU-only version of sherpa-onnx
 
-- Models: Multilingual FunASR ONNX models->SenseVoiceSmall->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+- Models: For Chinese users FunASR ONNX models->SenseVoiceSmall->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+  
 
 ## Prerequisites
 
