@@ -3,7 +3,7 @@ FROM debian:bookworm-slim
 ARG TARGETARCH
 ARG TARGETVARIANT
 
-
+# install required packages
 # 安装系统依赖
 # Docker里绝对不要用 venv,因为Docker 本身就是“超级虚拟环境”
 RUN apt-get update \
