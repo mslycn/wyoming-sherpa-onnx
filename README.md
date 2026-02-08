@@ -123,3 +123,7 @@ https://k2-fsa.github.io/sherpa/onnx/python/install.html#method-1-from-pre-compi
 
 https://github.com/mawwalker/stt-server
 
+AudioChunk
+
+https://github.com/ptbsare/sherpa-onnx-tts-stt
+
