@@ -106,9 +106,13 @@ output
 
 ~~~
 
-### 3.下载语音识别模型到本地 下载模型文件 Download model  
+### 3.下载语音识别模型到本地 下载模型文件 Download model 
 
-1. sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 - SenseVoiceSmall FP32 onnx模型
+1. SenseVoice多语言语音理解模型Small   last updated:2024-09-26
+
+https://www.modelscope.cn/models/iic/SenseVoiceSmall
+
+2. sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 - SenseVoiceSmall FP32 onnx模型
 
 SenseVoiceSmall 官方模型来源
 
