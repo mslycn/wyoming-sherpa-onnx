@@ -31,7 +31,7 @@ import re
 
 
 
-
+# Wyoming protocol 1.8.0 imports
 from wyoming.asr import Transcribe, Transcript
 from wyoming.audio import AudioStart, AudioChunk, AudioStop
 from wyoming.event import Event
@@ -47,7 +47,7 @@ from wyoming.server import AsyncTcpServer, AsyncEventHandler
 
 # ---------------- 1. 日志设置 ----------------
 # ---------------- Logging ----------------
-_LOGGER = logging.getLogger(__name__)
+_LOGGER = logging.getLogger("wyoming-funasr-onnx")
 
 
 import sherpa_onnx
@@ -65,7 +65,8 @@ _LOGGER.info("%s - start excute sherpa-onnx" % datetime.datetime.now().strftime(
 start_model = time.time()
 
 # 请确保路径指向你下载的模型文件夹
-MODEL_DIR = "/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
+# MODEL_DIR = "/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
+MODEL_DIR = "/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
 
 def create_recognizer():
     _LOGGER.info(f"Loading Sherpa-ONNX model from {MODEL_DIR}")
@@ -107,11 +108,14 @@ class CustomSTTHandler(AsyncEventHandler):
         self.audio_buffer = bytearray()
 
     async def handle_event(self, event: Event) -> bool:
+        """Handle Wyoming protocol events"""
+
+        # Handle service discovery 
         if Describe.is_type(event.type):
             _LOGGER.info("Describe request received：Received Describe event from client")
         
-            print(f'Describe request received：Received Describe event from client')
-
+            
+            print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - Describe request received：Received Describe event from ha client")
              # see:https://github.com/Johnson145/voxtral_wyoming/blob/main/src/voxtral_wyoming/server.py
             attribution = Attribution(
                  name="FunASR Wyoming",
@@ -140,23 +144,32 @@ class CustomSTTHandler(AsyncEventHandler):
             await self.write_event(info.event())
             return True
 
+        # Handle transcription requests
         if Transcribe.is_type(event.type):
             _LOGGER.info("Transcribe received")
             return True
 
+        # Handle audio stream start
         if AudioStart.is_type(event.type):
             _LOGGER.info("AudioStart received")
             print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - AudioStart Event received. Processing...")
             self.audio_buffer.clear()
             return True
 
+        # Handle audio data chunks
         if AudioChunk.is_type(event.type):
             chunk = AudioChunk.from_event(event)
             self.audio_buffer.extend(chunk.audio)
+
+            #  如果音频特别长，每 3 秒打印一次状态，保持连接活跃
+            if len(self.audio_buffer) % 48000 == 0:
+                _LOGGER.info(f"正在接收音频... 已累积 {len(self.audio_buffer)/32000:.1f} 秒")
+                print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - AudioChunk Event received. 正在接收音频... 已累积 {len(self.audio_buffer)/32000:.1f} 秒...")
             return True
 
 
  # ---------------- AudioStop (Optimized with NumPy) ----------------
+        # Handle audio stream end
         if AudioStop.is_type(event.type):
             _LOGGER.info(f"Processing {len(self.audio_buffer)} bytes of audio...")
             print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - AudioStop received. Processing...")
@@ -179,6 +192,8 @@ class CustomSTTHandler(AsyncEventHandler):
                 print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - 过滤掉 SenseVoice 可能输出的情感/事件标签")
                 if res and len(res) > 0:
                     result_text = res
+
+                    print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - 识别结果原文: {result_text}")
                     # Regex to strip emotional/event tags like <|HAPPY|>
                     result_text = re.sub(r'<\|.*?\|>', '', result_text).strip()
                 else:
