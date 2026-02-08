@@ -108,7 +108,9 @@ output
 
 ### 3.下载语音识别模型到本地 下载模型文件 Download model 
 
-1. SenseVoice多语言语音理解模型Small   last updated:2024-09-26
+1. SenseVoice多语言语音理解模型分为：SenseVoice-Small、SenseVoice-Large
+  
+SenseVoice-Small   last updated:2024-09-26
    
 https://www.modelscope.cn/models/iic/SenseVoiceSmall
 
