@@ -7,6 +7,13 @@
 Ensure you have home assistant installed on your machine (Linux) and that it is running. 
 
 ## Environment
+
+~~~
+ESP32-S3-Box3b   →   Wyoming stt server  →   sherpa-onnx   →   Home Assistant
+        麦克风             STT服务器           语音转文字
+
+~~~
+
 rpi5 8G
 
 home assistant docker 2025.11.5
@@ -14,6 +21,10 @@ home assistant docker 2025.11.5
 esp32-s3-box3b：负责语音采集，唤醒词 + VAD。
 
 wyoming-funasr-onnx(RPi5)：负责 STT
+
+  - 推理引擎 ：sherpa-onnx
+  - 推理模型 ：SenseVoiceSmall ONNX
+  
 
 Wyoming-Piper (RPi5)：负责 TTS
 
