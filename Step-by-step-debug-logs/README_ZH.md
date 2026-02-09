@@ -17,7 +17,9 @@ run ok , 识别准确率欠佳
 
 https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step1-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.py
 
-- step 2. 改为加载sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09模型进行语音识别。用 FP32 的 model.onnx 提高识别率准确度
+- step 2. Use sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 instead of sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
+  
+改为加载sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09模型进行语音识别。用 FP32 的 model.onnx 提高识别率准确度
 
   step2-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.py
 
