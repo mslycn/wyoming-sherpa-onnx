@@ -28,3 +28,11 @@ sherpa-onnx + sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
 run ok , 识别准确率较佳
 
 https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step2-server2-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.py
+
+- step 3. add silero vad in AudioChunk Event
+
+  1. download silero_vad model
+     
+  2. add vad in AudioChunk Event
+
+  https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step3-server3-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09_vad.py
