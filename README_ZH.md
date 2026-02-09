@@ -11,6 +11,7 @@ Ensure you have home assistant installed on your machine (Linux) and that it is 
 ~~~
 ESP32-S3-Box3b   →   Wyoming stt server  →   sherpa-onnx   →   Home Assistant
         麦克风             STT服务器           语音转文字
+                         （i am here）        （i use it）
 
 ~~~
 
