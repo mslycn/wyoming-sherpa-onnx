@@ -46,7 +46,13 @@ from wyoming.server import AsyncTcpServer, AsyncEventHandler
 
 
 # ---------------- 1. 日志设置 ----------------
+
 # ---------------- Logging ----------------
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s.%(msecs)03d - %(levelname)s - %(name)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 _LOGGER = logging.getLogger("wyoming-funasr-onnx")
 
 
@@ -61,12 +67,12 @@ _LOGGER.info("%s - start excute sherpa-onnx" % datetime.datetime.now().strftime(
 
 
 
-
+# load model
 start_model = time.time()
 
 # 请确保路径指向你下载的模型文件夹
-MODEL_DIR = "/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
-# MODEL_DIR = "/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
+# MODEL_DIR = "/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
+MODEL_DIR = "/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
 
 def create_recognizer():
     _LOGGER.info(f"Loading Sherpa-ONNX model from {MODEL_DIR}")
@@ -97,6 +103,7 @@ print(f'加载模型SenseVoiceSmall耗时 {load_time_ms:.2f} 毫秒')
 class CustomSTTHandler(AsyncEventHandler):
 
     """
+    Event handler for clients.
     Handle a single Wyoming TCP connection for ASR.
 
     Expects Describe? → Transcribe? → AudioStart → AudioChunk* → AudioStop,
@@ -110,7 +117,7 @@ class CustomSTTHandler(AsyncEventHandler):
     async def handle_event(self, event: Event) -> bool:
         """Handle Wyoming protocol events"""
 
-        # Handle service discovery 
+        # 1. Handle service discovery 
         if Describe.is_type(event.type):
             _LOGGER.info("Describe request received：Received Describe event from client")
         
@@ -144,35 +151,30 @@ class CustomSTTHandler(AsyncEventHandler):
             await self.write_event(info.event())
             return True
 
-        # Handle transcription requests
-        if Transcribe.is_type(event.type):
-            _LOGGER.info("Transcribe received")
-            return True
-
-        # Handle audio stream start
+        # 2. Handle audio stream start
         if AudioStart.is_type(event.type):
             _LOGGER.info("AudioStart received")
-            print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - AudioStart Event received. Processing...")
+ 
             self.audio_buffer.clear()
             return True
 
-        # Handle audio data chunks
+        # 3. Handle audio data chunks
         if AudioChunk.is_type(event.type):
             chunk = AudioChunk.from_event(event)
             self.audio_buffer.extend(chunk.audio)
 
             #  如果音频特别长，每 3 秒打印一次状态，保持连接活跃
             if len(self.audio_buffer) % 48000 == 0:
-                _LOGGER.info(f"正在接收音频... 已累积 {len(self.audio_buffer)/32000:.1f} 秒")
-                print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - AudioChunk Event received. 正在接收音频... 已累积 {len(self.audio_buffer)/32000:.1f} 秒...")
+                _LOGGER.info(f"AudioChunk Event received.正在接收音频... 已累积 {len(self.audio_buffer)/32000:.1f} 秒")
+  
             return True
 
 
  # ---------------- AudioStop (Optimized with NumPy) ----------------
-        # Handle audio stream end
+        # 4. Handle audio stream end
         if AudioStop.is_type(event.type):
-            _LOGGER.info(f"Processing {len(self.audio_buffer)} bytes of audio...")
-            print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - AudioStop received. Processing...")
+            _LOGGER.info(f"AudioStop Event received.Processing {len(self.audio_buffer)} bytes of audio...")
+   
 
             if not self.audio_buffer:
                 await self.write_event(Transcript(text="").event())
@@ -200,13 +202,13 @@ class CustomSTTHandler(AsyncEventHandler):
                     result_text = ""
                     print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - 接收到的音频为空...")     
           
-                _LOGGER.info(f"Result: {result_text}")
-                print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - 识别结果: {result_text}")
+                _LOGGER.info(f"识别结果 Result: {result_text}")
+               
                 await self.write_event(Transcript(text=result_text).event())
                 
             except Exception as e:
-                _LOGGER.error(f"Inference error: {e}", exc_info=True)
-                print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - 识别过程出错")
+                _LOGGER.error(f"识别过程出错 Inference error: {e}", exc_info=True)
+                
                 await self.write_event(Transcript(text="").event())
             
             self.audio_buffer.clear()
@@ -214,11 +216,17 @@ class CustomSTTHandler(AsyncEventHandler):
 
         return True
 
+        # Handle transcription requests
+        if Transcribe.is_type(event.type):
+            _LOGGER.info("Transcribe Event received.ha客户端请求识别为文字...")
+  
+            return True
+
 
 async def main():
     server = AsyncTcpServer(host="0.0.0.0", port=10900)
-    _LOGGER.info("Wyoming STT Server started on port 10800")
-    print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]} - Wyoming Sherpa-ONNX Server started on port 10900")
+    _LOGGER.info("Wyoming Sherpa-ONNX Server started on port 10900")
+   
     await server.run(CustomSTTHandler)
 
 
