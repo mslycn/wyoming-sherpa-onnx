@@ -69,7 +69,7 @@ server.py
 
 https://github.com/mslycn/wyoming-funasr-onnx/commit/a62a07064356108470b85c46d97993a6d6c99678
 
-##  20260608  AudioChunk.is_type(event.type):  做vad检查
+##  20260608  AudioChunk.is_type(event.type):  AudioChunk 处理函数中做vad检查
 
 在 AudioChunk 阶段做 VAD 是解决“识别不准”和“响应慢”的方案。
 
@@ -78,6 +78,9 @@ https://github.com/mslycn/wyoming-funasr-onnx/commit/a62a07064356108470b85c46d97
 推理引擎 ：sherpa-onnx
 
 推理模型 ：SenseVoiceSmall ONNX 
+
+VAD      : Silero VAD      
+
 
 
 
