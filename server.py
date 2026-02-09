@@ -71,6 +71,7 @@ _LOGGER.info("%s - start excute sherpa-onnx" % datetime.datetime.now().strftime(
 start_model = time.time()
 
 # 请确保路径指向你下载的模型文件夹
+# /data/models
 # MODEL_DIR = "/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
 MODEL_DIR = "/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09"
 
@@ -114,8 +115,32 @@ class CustomSTTHandler(AsyncEventHandler):
         super().__init__(*args, **kwargs)
         self.audio_buffer = bytearray()
 
+        self.processed = False
+        # 1. 初始化 VAD (使用 sherpa_onnx 内置的 Silero VAD)
+        # 需确保 MODEL_DIR 下有 silero_vad.onnx
+ 
+
+        # ---add vad： step 1. 初始化 VAD 配置 (针对 1.12.23 API) ---
+        vad_config = sherpa_onnx.VadModelConfig()
+        # 必须逐项赋值给嵌套的 silero_vad 对象
+        vad_config.silero_vad.model = f"{MODEL_DIR}/silero_vad.onnx"
+        vad_config.silero_vad.min_speech_duration = 0.25  # 用户必须连续说话超过 0.25秒，VAD 才会把状态从 False 改为 True
+        vad_config.silero_vad.min_silence_duration = 0.5  # 0.5秒静音即截断
+        vad_config.silero_vad.window_size = 512
+        
+        vad_config.sample_rate = 16000
+        vad_config.num_threads = 1
+        
+        # 实例化真正的检测器
+        self.vad = sherpa_onnx.VoiceActivityDetector(vad_config, buffer_size_in_seconds=30)
+
+        self.was_speaking = False
+
     async def handle_event(self, event: Event) -> bool:
         """Handle Wyoming protocol events"""
+
+        # 这一行能让你看到客户端发出的每一个event
+        # _LOGGER.info(f"Received event type: {event.type}")
 
         # 1. Handle service discovery 
         if Describe.is_type(event.type):
@@ -156,6 +181,11 @@ class CustomSTTHandler(AsyncEventHandler):
             _LOGGER.info("AudioStart received")
  
             self.audio_buffer.clear()
+
+            # add vad: step 2
+            self.processed = False
+            self.vad.reset()
+ 
             return True
 
         # 3. Handle audio data chunks
@@ -166,6 +196,42 @@ class CustomSTTHandler(AsyncEventHandler):
             #  如果音频特别长，每 3 秒打印一次状态，保持连接活跃
             if len(self.audio_buffer) % 48000 == 0:
                 _LOGGER.info(f"AudioChunk Event received.正在接收音频... 已累积 {len(self.audio_buffer)/32000:.1f} 秒")
+
+            # 转换音频供 VAD 检查
+            audio_f32 = np.frombuffer(chunk.audio, dtype=np.int16).astype(np.float32) / 32768.0
+            
+            # 喂给 VAD
+            self.vad.accept_waveform(audio_f32)      
+
+            # --- 2. 检查语音结束点 (Endpoint) ---
+            # 如果检测到说话已经开始，且现在检测到了结束点
+            # if self.vad.is_speech_detected():
+               # _LOGGER.info("VAD: 检测到检测到人声")
+                # await self._process_audio()
+                # 我们不再关闭连接，而是标记已处理。AudioStop 到达时会正常退出。
+                # 或者直接 return False 强制客户端断开，看你需求。
+     
+              
+                # 如果检测到用户停止说话，主动发送一个 AudioStop 事件来触发最终识别结果返回
+                # await self.write_event(AudioStop().event())
+           
+            self.was_speaking = False
+
+            currently_speaking = self.vad.is_speech_detected()
+
+            _LOGGER.info(f"Speech State: {currently_speaking}")
+
+            if self.vad.is_speech_detected():
+                 if not self.was_speaking:
+                      _LOGGER.info("Started speaking!")
+                      self.was_speaking = True
+            else:
+                  if not currently_speaking and self.was_speaking:
+                        _LOGGER.info("User stopped speaking.")
+                        # This is where you would trigger your STT or GPT response
+                        await self.write_event(AudioStop().event())
+                        self.was_speaking = False
+                        self.vad.reset()  # Optional: clear the buffer for the next sentence
   
             return True
 
