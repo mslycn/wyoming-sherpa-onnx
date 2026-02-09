@@ -189,7 +189,7 @@ raspberrypi:/funasr-wyoming-sherpa-onnx# tree -L 2 ./sherpa-onnx-sense-voice-zh-
 source: https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17
 
 
-流式模型 Zipformer
+流式模型 Zipformer 小米团队
 
 ### Docker
 
@@ -224,6 +224,21 @@ recognizer.decode_stream(stream)
 
 print(stream.result.text)
 ~~~
+
+### AudioChunk.is_type(event.type):  做vad检查  - 优化点
+
+在 sherpa-onnx 框架下，在 AudioChunk 阶段做 VAD 检查是官方推荐的专业做法。
+
+sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最准的 CPU 级 VAD 模型），直接调用 sherpa_onnx 的接口即可实现流式截断。
+
+在 AudioChunk 做 VAD 优点
+
+极速响应：用户说完话（比如“开火”），服务端 VAD 检测到静音（例如 500ms），立刻启动推理。而不需要等 ESP32 那个不靠谱的 15 秒超时。
+
+提升准确率：SenseVoice 等模型在处理带有长段噪音的音频时容易产生“幻觉”（如你遇到的“开火”变“快活”）。VAD 可以在喂给模型前就把末尾的垃圾噪音切掉。
+
+节省资源：一旦检测到静音，立刻断开连接。
+
 
 
 FunASR 官方支持使用 funasr-export 工具将模型导出为 ONNX 格式
