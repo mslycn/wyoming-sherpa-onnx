@@ -2,6 +2,13 @@
 
 ## 调整为使用FP32精度模型
 
+### Old
+sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
+
+### New
+
+sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+
 发现识别准确率 不及 原生 funasr。经查，使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型，音频精度被转换成了8位。造成开火，成开活，等。
 
 决定调整为FP32精度模型
