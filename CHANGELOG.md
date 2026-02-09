@@ -81,7 +81,7 @@ https://github.com/mslycn/wyoming-funasr-onnx/commit/a62a07064356108470b85c46d97
 
 VAD      : Silero VAD      
 
-
+https://github.com/mslycn/wyoming-funasr-onnx/commit/93a282738d903331f00573612e6d767f07b734e0
 
 
 
