@@ -1,3 +1,4 @@
+# for custom wyoming stt server developer
 
 基于 sherpa-onnx 和 funasr 预训练模型SenseVoiceSmall 的 wyoming stt server。
 
