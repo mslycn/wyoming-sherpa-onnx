@@ -1,3 +1,11 @@
+- step 01. 实现wyoming协议框架
+
+  https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/serverv01_onlyWyoming%20Protocol%20version%201.8.0.py
+
+- step 02.处理Describe Event，使其能被home assistant wyoming integration 添加 
+
+https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/serverv02_onlyWyoming%20Protocol%20version%201.8.0.py
+
 - step 1. step1-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.py
 
 sherpa-onnx + sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09 
