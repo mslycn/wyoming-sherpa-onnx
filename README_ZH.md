@@ -36,11 +36,11 @@ Wyoming-Piper (RPi5)：负责 TTS
 
 2. 安装依赖项
    
-   安装sherpa-onnx
+   安装sherpa-onnx: asr推理引擎
 
-   安装wyoming==1.8.0： wyoming协议
+   安装wyoming==1.8.0： wyoming协议,Home Assistant 语音助手协议库
 
-   安装numpy : 音频处理   
+   安装numpy : 音频处理，stt server代码使用  
 
 3. 下载语音识别模型到本地
 
