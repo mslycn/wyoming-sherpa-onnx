@@ -119,6 +119,18 @@ output
 
 ~~~
 
+## RPi5 + sherpa-onnx + 中文模型可选模型
+
+~~~
+SenseVoice Small
+
+Paraformer
+
+Zipformer
+
+Whisper tiny/large
+~~~
+
 ### 3.下载语音识别模型到本地 下载模型文件 Download model 
 
 1. SenseVoice多语言语音理解模型分为：SenseVoice-Small、SenseVoice-Large
