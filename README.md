@@ -120,9 +120,15 @@ docker run -d \
 
 Install system dependencies
 
-install the Python package sherpa-onnx
 ~~~
+# install the Python package sherpa-onnx
 pip3 install sherpa-onnx sherpa-onnx-bin
+
+# Wyoming Protocol
+pip3 install wyoming==1.8.0
+
+# Audio Processing
+pip3 install numpy==2.4.2
 ~~~
 
 
