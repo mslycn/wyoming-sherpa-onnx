@@ -269,11 +269,16 @@ is_speech_detected()容易受背景里微弱的电视声、风扇声干扰（Sil
 is_speech_detected()只检测“这一刻”有没有人在说话。is_speech_detected()是否检测到人声会随说话停顿、背景噪音让 VAD is_speech_detected()在 True 和 False快速切换。
 
 
-### Endpoint detected - sherpa-onnx 端点检测 (Endpointing) 方案 - 
+### Endpoint detected - sherpa-onnx 端点检测 (Endpointing Detection) 方案 - 
 
 sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
 
-工作原理
+Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判断一句话 什么时候结束，不是逐帧判断有没有语音。
+
+
+- 工作原理
+
+
 
 VAD + 能量的双保险方案：
 
