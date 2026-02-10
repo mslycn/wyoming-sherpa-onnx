@@ -235,6 +235,25 @@ AudioChunk.is_type(event.type):  做vad检查  - 优化点
 
 sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最准的 CPU 级 VAD 模型），直接调用 sherpa_onnx 的接口即可实现流式截断。
 
+- 工作原理
+
+~~~
+AudioChunk
+    ↓
+用numpy转换为模型所要求的音频格式
+    ↓
+VAD 检测
+    ↓
+if speech:
+    送入 ASR
+else:
+    丢弃
+
+~~~
+
+连续 N 帧静音 300ms 静音 → 结束一句话
+
+
 在 AudioChunk 做 VAD 优点
 
 极速响应：用户说完话（比如“开火”），服务端 VAD 检测到静音（例如 500ms），立刻启动推理。而不需要等 ESP32 那个不靠谱的 15 秒超时。
