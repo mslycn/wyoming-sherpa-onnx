@@ -227,6 +227,8 @@ print(stream.result.text)
 
 ### AudioChunk.is_type(event.type):  做vad检查  - 优化点
 
+单VAD检测方案
+
 在 sherpa-onnx 框架下，在 AudioChunk 阶段做 VAD 检查是官方推荐的专业做法。
 
 sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最准的 CPU 级 VAD 模型），直接调用 sherpa_onnx 的接口即可实现流式截断。
@@ -238,6 +240,23 @@ sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最
 提升准确率：SenseVoice 等模型在处理带有长段噪音的音频时容易产生“幻觉”（如你遇到的“开火”变“快活”）。VAD 可以在喂给模型前就把末尾的垃圾噪音切掉。
 
 节省资源：一旦检测到静音，立刻断开连接。
+
+缺点：容易受背景里微弱的电视声、风扇声干扰（Silero 有时太灵敏）
+
+
+### sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
+
+工作原理
+
+VAD + 能量的双保险方案：
+
+单纯 VAD：容易受背景里微弱的电视声、风扇声干扰（Silero 有时太灵敏）。
+
+能量门限：强制要求声音必须有一定的“物理强度”，只有当你对着麦克风说话时才会被标记为 True。
+
+
+
+
 
 
 
