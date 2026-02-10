@@ -130,15 +130,20 @@ pip3 install sherpa-onnx sherpa-onnx-bin
 
 useful links
 
-https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models
-
 Install the Python package sherpa-onnx 
 
 https://k2-fsa.github.io/sherpa/onnx/python/install.html#method-1-from-pre-compiled-wheels-cpu-only
 
+download model (sense-voice small)
+
+https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models
+
+https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
+
+
 https://github.com/mawwalker/stt-server
 
-AudioChunk
+AudioChunk Event
 
 https://github.com/ptbsare/sherpa-onnx-tts-stt
 
