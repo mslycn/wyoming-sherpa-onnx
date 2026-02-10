@@ -225,9 +225,11 @@ recognizer.decode_stream(stream)
 print(stream.result.text)
 ~~~
 
-### AudioChunk.is_type(event.type):  做vad检查  - 优化点
+### sherpa-onnx VAD (Voice Activity Detection) 方案
 
-单VAD检测方案
+AudioChunk.is_type(event.type):  做vad检查  - 优化点
+
+单VAD检测方案 - VAD (Voice Activity Detection)
 
 在 sherpa-onnx 框架下，在 AudioChunk 阶段做 VAD 检查是官方推荐的专业做法。
 
@@ -241,16 +243,22 @@ sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最
 
 节省资源：一旦检测到静音，立刻断开连接。
 
-缺点：容易受背景里微弱的电视声、风扇声干扰（Silero 有时太灵敏）
+缺点：
+
+is_speech_detected()容易受背景里微弱的电视声、风扇声干扰（Silero 有时太灵敏）
+
+is_speech_detected()只检测“这一刻”有没有人在说话。is_speech_detected()是否检测到人声会随说话停顿、背景噪音让 VAD is_speech_detected()在 True 和 False快速切换。
 
 
-### sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
+### sherpa-onnx 端点检测 (Endpointing) 方案
+
+sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
 
 工作原理
 
 VAD + 能量的双保险方案：
 
-单纯 VAD：容易受背景里微弱的电视声、风扇声干扰（Silero 有时太灵敏）。
+端点检测 (Endpointing)：基于 VAD 的结果，结合时间规则。例如：“如果用户停止说话超过 0.8 秒，则判定为一句话结束”。
 
 能量门限：强制要求声音必须有一定的“物理强度”，只有当你对着麦克风说话时才会被标记为 True。
 
