@@ -298,6 +298,11 @@ VAD + 能量的双保险方案：
 
 能量门限：强制要求声音必须有一定的“物理强度”，只有当你对着麦克风说话时才会被标记为 True。
 
+关键技术点：
+
+Endpoint Detection 是 sherpa-onnx 提供的能力
+
+不是 SenseVoice 模型自己实现的
 
 
 
