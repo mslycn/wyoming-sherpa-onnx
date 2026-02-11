@@ -1,4 +1,6 @@
-# for custom wyoming stt server developer
+# Sherpa-ONNX wyoming协议语音识别服务器for home assistant
+
+custom wyoming stt server for developer
 
 基于 sherpa-onnx 和 funasr 预训练模型SenseVoiceSmall 的 wyoming stt server。
 
