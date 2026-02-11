@@ -327,8 +327,8 @@ Download silero-vad
 Speech recognition from a microphone with VAD
 
 ~~~
-wget https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
-
+silero_vad.onnx- exported： by k2-fsa https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
+silero_vad v5： wget https://github.com/snakers4/silero-vad/raw/refs/tags/v5.0/files/silero_vad.onnx
 ~~~
 source：https://k2-fsa.github.io/sherpa/onnx/vad/silero-vad.html#download-models-files
 
