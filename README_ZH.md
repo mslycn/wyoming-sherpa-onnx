@@ -312,6 +312,28 @@ sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17模型 模型原始说明 http
 
 从modelscope 的镜像库下载：https://modelscope.cn/models/pengzhendong/sherpa-onnx-sense-voice-zh-en-ja-ko-yue
 
+Download
+~~~
+cd /path/to/sherpa-onnx
+
+wget https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.tar.bz2
+tar xvf sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.tar.bz2
+rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.tar.bz2
+
+~~~
+
+Speech recognition from a microphone with VAD
+
+~~~
+wget https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
+
+./build/bin/sherpa-onnx-vad-microphone-offline-asr \
+  --silero-vad-model=./silero_vad.onnx \
+  --tokens=./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17/tokens.txt \
+  --sense-voice-model=./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17/model.int8.onnx
+
+~~~
+
 
 FunASR 官方支持使用 funasr-export 工具将模型导出为 ONNX 格式
 
