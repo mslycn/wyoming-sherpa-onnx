@@ -308,7 +308,9 @@ Endpoint Detection 是 sherpa-onnx 提供的能力
 
 
 
+sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17模型 模型原始说明 https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17
 
+从modelscope 的镜像库下载：https://modelscope.cn/models/pengzhendong/sherpa-onnx-sense-voice-zh-en-ja-ko-yue
 
 
 FunASR 官方支持使用 funasr-export 工具将模型导出为 ONNX 格式
