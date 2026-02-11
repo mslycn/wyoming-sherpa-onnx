@@ -322,18 +322,15 @@ rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.tar.bz2
 
 ~~~
 
+Download silero-vad
+
 Speech recognition from a microphone with VAD
 
 ~~~
 wget https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
 
-./build/bin/sherpa-onnx-vad-microphone-offline-asr \
-  --silero-vad-model=./silero_vad.onnx \
-  --tokens=./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17/tokens.txt \
-  --sense-voice-model=./sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17/model.int8.onnx
-
 ~~~
-
+source：https://k2-fsa.github.io/sherpa/onnx/vad/silero-vad.html#download-models-files
 
 FunASR 官方支持使用 funasr-export 工具将模型导出为 ONNX 格式
 
