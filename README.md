@@ -26,14 +26,14 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 ~~~
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│  HA WebSocket   │    │  Wyoming protocol│    │   sherpa-onnx   │
+│  HA             │    │  Wyoming protocol│    │   sherpa-onnx   │
 │   Client        │◄──►│  ASR   Server    │◄──►│   Engine        │
 │                 │    │                  │    │                 │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                                 │                        │
                                 ▼                        ▼
                        ┌──────────────────┐    ┌─────────────────┐
-                       │ HAonnection      │    │  Model Files    │
+                       │ HA connection      │    │  Model Files    │
                        │  Manager         │    │  • SenseVoice   │
                        │                  │    │  • Silero VAD   │
                        └──────────────────┘    └─────────────────┘
@@ -52,6 +52,14 @@ funasr-wyoming-funasr-onnx/
 └── .github/
     └── workflows/
         └── docker-publish.yml
+
+
+Model Hosting & Distribution
+   ├── ModelScope
+   └── Hugging Face
+
+Inference  Framework
+   └──  sherpa
 
 ~~~
 
