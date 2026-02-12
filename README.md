@@ -26,14 +26,14 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 ~~~
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│  HA             │    │  Wyoming protocol│    │   sherpa-onnx   │
-│   Client        │◄──►│  ASR   Server    │◄──►│   Engine        │
+│                 │    │  Wyoming protocol│    │   sherpa-onnx   │
+│  HA Client      │◄──►│  ASR   Server    │◄──►│   Engine        │
 │                 │    │                  │    │                 │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
                                 │                        │
                                 ▼                        ▼
                        ┌──────────────────┐    ┌─────────────────┐
-                       │ HA connection      │    │  Model Files    │
+                       │ HA connection    │    │  Model Files    │
                        │  Manager         │    │  • SenseVoice   │
                        │                  │    │  • Silero VAD   │
                        └──────────────────┘    └─────────────────┘
