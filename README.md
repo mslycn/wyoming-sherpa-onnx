@@ -148,11 +148,15 @@ Install the Python package sherpa-onnx
 
 https://k2-fsa.github.io/sherpa/onnx/python/install.html#method-1-from-pre-compiled-wheels-cpu-only
 
-download model (sense-voice small)
+- download model (sense-voice small)
 
 https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models
 
 https://k2-fsa.github.io/sherpa/onnx/sense-voice/index.html
+
+- download sherpa-onnx » VAD » silero-vad model
+
+https://k2-fsa.github.io/sherpa/onnx/vad/silero-vad.html#download-models-files
 
 
 https://github.com/mawwalker/stt-server
