@@ -32,8 +32,11 @@ RUN pip3 install --no-cache-dir --break-system-packages \
 RUN pip3 install --no-cache-dir --break-system-packages \
     wyoming==1.8.0
 
-# ===== 代码 =====
+# ===== Copy application code代码 =====
 COPY server.py .
+
+# Create directories
+RUN mkdir -p /data  /data/models /data/models/vad
 
 # 暴露端口
 EXPOSE 10300
