@@ -341,3 +341,18 @@ pip install -U "funasr[export]"
 python -m funasr.export.export_model --model-name iic/SenseVoiceSmall --export-dir ./export --type onnx
 
 ~~~
+
+https://modelscope.cn/models/xiaowangge/sherpa-onnx-sense-voice-small
+
+~~~
+# 安装 ModelScope
+pip install modelscope
+
+# SDK 模型下载
+from modelscope import snapshot_download
+model_dir = snapshot_download('xiaowangge/sherpa-onnx-sense-voice-small')
+
+~~~
+
+
+
