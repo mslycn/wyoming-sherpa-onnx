@@ -344,6 +344,8 @@ python -m funasr.export.export_model --model-name iic/SenseVoiceSmall --export-d
 
 https://modelscope.cn/models/xiaowangge/sherpa-onnx-sense-voice-small
 
+参考https://github.com/k2-fsa/sherpa-onnx/blob/master/scripts/sense-voice/export-onnx.py脚本，完成 onnx 模型导出
+
 ~~~
 # 安装 ModelScope
 pip install modelscope
