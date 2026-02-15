@@ -309,11 +309,15 @@ sherpa-onnx 提供了 EndpointConfig 参数。
 案例代码：https://github.com/ptbsare/sherpa-onnx-tts-stt
 
 
-### Endpoint detected - sherpa-onnx 端点检测 (Endpointing Detection) 方案 - 
+### way 3. Endpoint detected - sherpa-onnx 端点检测 (Endpointing Detection) 方案 
+
+Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判断一句话 什么时候结束，不是逐帧判断有没有语音。
+
+### way 4. VAD + Energy双检测方案 
 
 sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
 
-Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判断一句话 什么时候结束，不是逐帧判断有没有语音。
+
 
 
 - 工作原理
