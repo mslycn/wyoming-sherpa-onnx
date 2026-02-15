@@ -129,6 +129,7 @@ Paraformer
   sherpa-onnx-paraformer-zh-small
 
 Zipformer
+  sherpa-onnx-streaming-zipformer-fr-kroko
 
 Whisper tiny/large
 ~~~
