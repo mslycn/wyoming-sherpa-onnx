@@ -313,6 +313,12 @@ sherpa-onnx 提供了 EndpointConfig 参数。
 
 Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判断一句话 什么时候结束，不是逐帧判断有没有语音。
 
+Sherpa streaming 模型
+
+~~~
+recognizer.is_endpoint(stream)
+~~~
+
 ### way 4. VAD + Energy双检测方案 
 
 sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
