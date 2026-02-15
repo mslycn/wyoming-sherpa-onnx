@@ -18,19 +18,17 @@ ESP32-S3-Box3b   →   Wyoming stt server  →   sherpa-onnx   →   Home Assist
 
 ~~~
 
-rpi5 8G
+Host ：rpi5 8G；Debain 12
 
-home assistant docker 2025.11.5
+HA   ：home assistant docker 2025.11.5
 
-esp32-s3-box3b：负责语音采集，唤醒词 + VAD。
+Satellite： esp32-s3-box3b，负责采集语音，检测唤醒词 (microWakeWord) + VAD。
 
-wyoming-funasr-onnx(RPi5)：负责 STT
+STT Server：wyoming-funasr-onnx stt server：负责 STT;负责接收 HA传来的音频流；负责转为文本；负责输出文本；
 
   - 推理引擎 ：sherpa-onnx
   - 推理模型 ：SenseVoiceSmall ONNX
-  
-
-Wyoming-Piper (RPi5)：负责 TTS
+  - VAD     ：
 
 ## Quick Start
 
