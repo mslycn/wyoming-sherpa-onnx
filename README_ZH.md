@@ -269,6 +269,8 @@ else:
 
 ~~~
 
+
+
 小结：
 
 连续 N 帧静音 300ms 静音 → 结束一句话
@@ -316,6 +318,24 @@ sherpa-onnx 提供了 EndpointConfig 参数。
 Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判断一句话 什么时候结束，不是逐帧判断有没有语音。
 
 Sherpa streaming 模型
+
+AudioChunk Event vad + Endpoint流程设计
+
+~~~
+AudioChunk 到达
+    ↓
+缓存音频
+    ↓
+VAD 判断是否有人声
+    ↓
+Endpoint 判断一句话结束
+    ↓
+调用STT 推理
+    ↓
+返回识别结果（发送 stt.text 事件）
+
+
+~~~
 
 ~~~
 recognizer.is_endpoint(stream)
