@@ -292,6 +292,22 @@ is_speech_detected()容易受背景里微弱的电视声、风扇声干扰（Sil
 
 is_speech_detected()只检测“这一刻”有没有人在说话。is_speech_detected()是否检测到人声会随说话停顿、背景噪音让 VAD is_speech_detected()在 True 和 False快速切换。
 
+### way 2.流式（streaming）STT 模型内置VAD 方案
+
+核心模型：streaming-zipformer
+
+sherpa-onnx 提供了 EndpointConfig 参数。
+
+工作原理
+
+将 audiochunk 喂给 stream.accept_waveform(chunk)。
+
+调用 recognizer.decode_stream(stream)。
+
+关键点：调用 recognizer.is_endpoint(stream)。如果返回 True，则认为用户说完了，此时应告知 Home Assistant 停止接收并处理识别结果。
+
+案例代码：https://github.com/ptbsare/sherpa-onnx-tts-stt
+
 
 ### Endpoint detected - sherpa-onnx 端点检测 (Endpointing Detection) 方案 - 
 
