@@ -345,6 +345,12 @@ Endpoint Detection 是 sherpa-onnx 提供的能力
 
 不是 SenseVoice 模型自己实现的
 
+## other
+~~~
+return True：-保持客户端连接，继续会话
+return False：结束会话，关闭和客户端的连接
+~~~
+
 
 
 sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17模型 模型原始说明 https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html#sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17
