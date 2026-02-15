@@ -106,13 +106,13 @@ step 5. Voice Assistant
 ##  put it all together, here is what I have, which seems to work:
 
 voice assistant
-~~
+~~~
 ASR Client : Esp32-s3-box3b
 stt        :
 tts        : piper
 wakeupword :  on device Esp32-s3-box3b
 
-~~
+~~~
 
 
 ## Docker Image  Debug
