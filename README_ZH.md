@@ -240,13 +240,14 @@ recognizer.decode_stream(stream)
 print(stream.result.text)
 ~~~
 
-### sherpa-onnx VAD (Voice Activity Detection) 方案
+### way 1.sherpa-onnx VAD (Voice Activity Detection) + 非流式（Non-streaming）STT 模型 方案
 
 AudioChunk.is_type(event.type):  做vad检查  - 优化点
 
 单VAD检测方案 - VAD (Voice Activity Detection)
 
 在 sherpa-onnx 框架下，在 AudioChunk 阶段做 VAD 检查是官方推荐的专业做法。
+
 
 sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最准的 CPU 级 VAD 模型），直接调用 sherpa_onnx 的接口即可实现流式截断。
 
@@ -266,7 +267,15 @@ else:
 
 ~~~
 
+小结：
+
 连续 N 帧静音 300ms 静音 → 结束一句话
+
+VAD 实时处理 audiochunk。
+
+当 VAD 连续检测到 X 毫秒的静音。
+
+切断录音，将之前积累的所有 audiochunks 合并成一个大文件，一次性发给 Zipformer 非流式模型。
 
 
 在 AudioChunk 做 VAD 优点
@@ -302,6 +311,9 @@ VAD + 能量的双保险方案：
 能量门限：强制要求声音必须有一定的“物理强度”，只有当你对着麦克风说话时才会被标记为 True。
 
 关键技术点：
+在 sherpa-onnx 框架中，端点检测（Endpoint Detection）功能，通过以下两种方式实现：
+
+1. sherpa-onnx 的流式识别器（Online Recognizer）自带了一套基于规则的端点检测机制。即使模型文件本身不含“端点检测代码”，你也可以通过 API 配置参数来让识别器自动判断一句话是否结束。
 
 Endpoint Detection 是 sherpa-onnx 提供的能力
 
