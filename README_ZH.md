@@ -119,12 +119,14 @@ output
 
 ~~~
 
-## RPi5 + sherpa-onnx + 中文模型可选模型
+## Supported STT Models - RPi5 + sherpa-onnx + 中文模型可选模型 
 
 ~~~
 SenseVoice Small
 
 Paraformer
+  sherpa-onnx-paraformer-zh
+  sherpa-onnx-paraformer-zh-small
 
 Zipformer
 
