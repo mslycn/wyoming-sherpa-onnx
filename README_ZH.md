@@ -18,6 +18,8 @@ ESP32-S3-Box3b   →   Wyoming stt server  →   sherpa-onnx   →   Home Assist
 
 ~~~
 
+## 实战配置
+
 Host ：rpi5 8G；Debain 12
 
 HA   ：home assistant docker 2025.11.5
@@ -122,13 +124,13 @@ output
 ## Supported STT Models - RPi5 + sherpa-onnx + 中文模型可选模型 
 
 ~~~
-SenseVoice Small
+SenseVoice Small - non streaming
 
-Paraformer
+Paraformer - streaming
   sherpa-onnx-paraformer-zh
   sherpa-onnx-paraformer-zh-small
 
-Zipformer
+Zipformer - streaming
   sherpa-onnx-streaming-zipformer-fr-kroko
 
 Whisper tiny/large
