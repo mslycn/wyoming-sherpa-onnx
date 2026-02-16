@@ -321,6 +321,8 @@ Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判
 
 Sherpa streaming 模型
 
+模型组合：silero_vad.onnx + streaming-zipformer
+
 AudioChunk Event vad + Endpoint流程设计
 
 ~~~
@@ -340,6 +342,30 @@ Endpoint 判断一句话结束
 ~~~
 
 ~~~
+import sherpa_onnx
+
+def create_recognizer():
+    # 端点检测配置
+    endpoint_config = sherpa_onnx.EndpointConfig(
+        # 规则 1: 如果还没开始说话，静音超过 2.4 秒就停止（防止意外开启后一直不关）
+        rule1=sherpa_onnx.EndpointRule(False, 2.4, 0.0),
+        # 规则 2: 重要！识别到文字后，如果静音超过 0.8-1.2 秒，判定为一句话结束
+        rule2=sherpa_onnx.EndpointRule(True, 1.2, 0.0),
+        # 规则 3: 强制断句，无论有没有说完，20 秒必须结束
+        rule3=sherpa_onnx.EndpointRule(False, 20.0, 0.0)
+    )
+    
+    # 初始化识别器
+    recognizer = sherpa_onnx.OnlineRecognizer(
+        tokens="tokens.txt",
+        encoder="encoder.onnx",
+        decoder="decoder.onnx",
+        joiner="joiner.onnx",
+        endpoint_config=endpoint_config,
+        model_type="zipformer2"
+    )
+    return recognizer
+
 recognizer.is_endpoint(stream)
 ~~~
 
