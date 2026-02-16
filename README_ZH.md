@@ -369,6 +369,8 @@ def create_recognizer():
 recognizer.is_endpoint(stream)
 ~~~
 
+测试：加上 Silero VAD。它专门处理 audiochunk 的语音活性，识别率比 ASR 模型自带的VAD检测高得多。
+
 ### way 4. VAD + Energy双检测方案 
 
 sherpa-onnx 的端点检测 (Endpointing) Silero VAD + 能量辅助双保险方案
