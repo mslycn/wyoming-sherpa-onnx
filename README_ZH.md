@@ -242,7 +242,9 @@ recognizer.decode_stream(stream)
 print(stream.result.text)
 ~~~
 
-### way 1.sherpa-onnx VAD (Voice Activity Detection) + 非流式（Non-streaming）STT 模型 方案
+### way 1.sherpa-onnx VAD (Voice Activity Detection) + 非流式（Non-streaming）+外置VAD STT 模型 方案
+
+应该用 OfflineRecognizer。在这种情况下，需要依靠 Wyoming Server 框架外置的 VAD 逻辑 来决定什么时候停止录音。
 
 AudioChunk.is_type(event.type):  做vad检查  - 优化点
 
@@ -318,6 +320,8 @@ sherpa-onnx 提供了 EndpointConfig 参数。
 
 
 ### way 3. Endpoint detected - sherpa-onnx 端点检测 (Endpointing Detection) 方案 
+
+必须使用流式模型，边说边识别，判断 is_endpoint 停顿即执行，必须用 OnlineRecognizer，并且必须配合 is_endpoint 来控制停顿。
 
 Endpoint Detection（端点检测）是判断一句话 什么时候开始， 判断一句话 什么时候结束，不是逐帧判断有没有语音。
 
