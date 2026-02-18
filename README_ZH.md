@@ -273,6 +273,40 @@ else:
 
 ~~~
 
+~~~
+import sherpa_onnx
+
+# 1. 初始化 VAD
+vad_config = sherpa_onnx.VadModelConfig(
+    silero_vad=sherpa_onnx.SileroVadModelConfig(model="silero_vad.onnx"),
+    sample_rate=16000
+)
+vad = sherpa_onnx.VadModel(vad_config)
+
+# 2. 初始化 SenseVoice
+recognizer = sherpa_onnx.OfflineRecognizer.from_sense_voice(
+    model="model.int8.onnx",
+    tokens="tokens.txt",
+    use_itn=True
+)
+
+# 3. 循环处理 Chunk
+buffer = []
+for chunk in audio_stream:
+    vad.accept_waveform(chunk)
+    
+    while not vad.is_empty():
+        # 如果检测到语音段落结束 (Endpoint)
+        if vad.is_detected():
+            segment = vad.front()
+            # 调用 SenseVoice 推理
+            stream = recognizer.create_stream()
+            stream.accept_waveform(16000, segment.samples)
+            recognizer.decode_stream(stream)
+            print(f"识别结果: {stream.result.text}")
+            vad.pop()
+
+~~~
 
 
 小结：
