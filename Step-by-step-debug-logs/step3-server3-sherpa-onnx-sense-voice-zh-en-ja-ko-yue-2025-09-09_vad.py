@@ -1,7 +1,14 @@
 
 #!/usr/bin/env python3
 """
-Wyoming Protocol Server Test
+Wyoming Protocol ASR Server with Silero VAD Test
+Home Assistant Wyoming implementation
+
+Features:
+- asr model: sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
+- Integrates Silero VAD for speech detection
+- Audiochunk Event:
+
 
 一个基于 Wyoming 协议 的语音转文字（STT）服务端脚本，使用阿里开源的 SenseVoiceSmall onnx模型。
 
