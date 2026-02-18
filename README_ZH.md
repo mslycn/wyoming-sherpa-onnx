@@ -121,6 +121,9 @@ output
 
 ~~~
 
+## ASR latency
+
+
 ## Supported STT Models - RPi5 + sherpa-onnx + 中文模型可选模型 
 
 ~~~
