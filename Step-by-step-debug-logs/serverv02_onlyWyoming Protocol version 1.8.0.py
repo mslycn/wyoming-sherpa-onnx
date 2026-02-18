@@ -1,4 +1,11 @@
+#!/usr/bin/env python3
+"""
+Wyoming Protocol ASR Server with Wyoming Protocol info
+can connect to home assistant by Wyoming Protocol
 
+Features:
+- add return Wyoming Protocol info
+"""
 import asyncio
 import logging
 
