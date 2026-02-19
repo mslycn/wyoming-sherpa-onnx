@@ -260,7 +260,7 @@ sherpa-onnx 内部已经集成了高性能的 Silero VAD（目前业界公认最
 
 - 工作原理
 
-VAD ：专门负责控制 audiochunk。只有 VAD 判定为人声时，才把 chunk 传给识别器；强制触发 AudioStop。
+VAD ：专门负责控制 audiochunk。直接将每个 audiochunk 喂给 ASR VAD 流，并使用 is_speech_detected() 判断是否人声。只有 VAD 判定为人声时，才把 chunk 传给识别器；强制触发 AudioStop。
 
 ~~~
 AudioChunk
