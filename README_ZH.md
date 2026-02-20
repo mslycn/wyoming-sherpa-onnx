@@ -33,7 +33,7 @@ STT Server：wyoming-funasr-onnx stt server：负责 STT;负责接收 HA传来�
 
   - 推理引擎 ：sherpa-onnx
   - 推理模型 ：SenseVoiceSmall ONNX
-  - VAD     ：
+  - VAD     ： silero-vad 
 
 ## Quick Start
 
