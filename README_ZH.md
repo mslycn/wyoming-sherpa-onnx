@@ -443,6 +443,24 @@ Endpoint Detection 是 sherpa-onnx 提供的能力
 
 不是 SenseVoice 模型自己实现的
 
+## Service Discovery
+
+Use wyoming.zeroconf to advertise services over mDNS:
+
+~~~
+from wyoming.zeroconf import publish_service
+
+publish_service("_wyoming._tcp", 10200, name="wyoming-funasr-onnx")
+
+~~~
+
+Use with zeroconf browser tools like:
+
+~~~
+avahi-browse _wyoming._tcp -r
+~~~
+
+
 ## other
 ~~~
 return True：-保持客户端连接，继续会话
