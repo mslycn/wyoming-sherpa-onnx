@@ -65,6 +65,8 @@ Inference  Framework
 
 ## How to use
 
+Start using wyoming-funasr-onnx stt server in your home assistant.
+
 step 1. Pull the Docker Image 
 ~~~
 docker pull ghcr.io/mslycn/wyoming-funasr-onnx:latest
