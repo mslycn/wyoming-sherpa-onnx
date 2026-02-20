@@ -13,12 +13,15 @@ Ensure you have home assistant installed on your machine (Linux) and that it is 
 
 ~~~
 ESP32-S3-Box3b   →   Wyoming stt server  →   sherpa-onnx   →   Home Assistant
-        麦克风             STT服务器           语音转文字
-                         （i am here）        （i use it）
-
+        麦克风             STT服务器           语音转文字                         （i am here）        （i use it）
 ~~~
 
-## 实战配置
+ESP32-S3-BOX-3B 实现 端侧唤醒 (On-device Wake Word)。 RPi 5 就不需要 24 小时监听音频流，只有在听到唤醒词后才会发送音频流给 Wyoming stt server，  Wyoming stt server进行语音识别。
+
+
+## 实战配置 
+
+ESP32-S3-BOX-3B 配合 RPi 5 (8GB) 的 Home Assistant (HA) 语音助手方案
 
 Host ：rpi5 8G；Debain 12
 
