@@ -229,6 +229,16 @@ docker run --rm -m 4g ghcr.io/mslycn/funasr-wyoming:main
 
 ## server.py
 
+~~~
+server.py
+   ↓
+调用 sherpa-onnx
+   ↓
+加载 SenseVoiceSmall onnx 模型
+
+~~~
+
+
 SenseVoiceSmall + sherpa-onnx 标准加载方式及完整最小可运行示例
 ~~~
 import sherpa_onnx
