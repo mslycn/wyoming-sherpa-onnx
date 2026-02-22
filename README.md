@@ -1,8 +1,8 @@
-# wyoming-funasr-onnx
+# wyoming-sherpa-onnx stt server for home assistant
 
 Wyoming protocol server for the funasr speech to text system.
 
-Wyoming FunASR ONNX is a lightweight Speech-to-Text (STT) server that bridges FunASR ONNX models with the Wyoming protocol, enabling seamless integration with Home Assistant voice assistant.
+Wyoming Sherpa ONNX is a lightweight Speech-to-Text (STT) server that bridges FunASR ONNX models with the Wyoming protocol, enabling seamless integration with Home Assistant voice assistant.
 
 It provides fast, local, and privacy-friendly speech recognition powered by FunASR ONNX models.
 
@@ -42,7 +42,7 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 ## Project structre
 ~~~
-funasr-wyoming-funasr-onnx/
+wyoming-sherpa-onnx/
 ├── Dockerfile
 ├── requirements.txt
 ├── server.py
@@ -69,7 +69,7 @@ Start using wyoming-funasr-onnx stt server in your home assistant.
 
 step 1. Pull the Docker Image 
 ~~~
-docker pull ghcr.io/mslycn/wyoming-funasr-onnx:latest
+docker pull ghcr.io/mslycn/wyoming-sherpa-onnx:latest
 ~~~
 
 step 2. download pre-trained  model(SenseVoice)
@@ -95,9 +95,9 @@ Docker run
 
 ~~~
 docker run -d \
-  --name wyoming-funasr-onnx \
+  --name wyoming-sherpa-onnx \
   -p 10300:10300 \
-  ghcr.io/mslycn/wyoming-funasr-onnx:latest
+  ghcr.io/mslycn/wyoming-sherpa-onnx:latest
 
 ~~~
 
@@ -120,11 +120,11 @@ wakeupword :  on device Esp32-s3-box3b
 ## Docker Image  Debug
 
 ~~~
-docker pull ghcr.io/mslycn/wyoming-funasr-onnx:main
+docker pull ghcr.io/mslycn/wyoming-sherpa-onnx:main
 ~~~
 
 ~~~
-docker run -it -p 10300:10300 -v /path/to/local/data:/data ghcr.io/mslycn/wyoming-funasr-onnx:main \
+docker run -it -p 10300:10300 -v /path/to/local/data:/data ghcr.io/mslycn/wyoming-sherpa-onnx:main \
     --model SenseVoiceSmall --language zh
 ~~~
 
@@ -133,7 +133,7 @@ docker run -d \
   --name "funasr" \
   -v /funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09:/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 \
   -p 10900:10900 \
-  ghcr.io/mslycn/wyoming-funasr-onnx:main
+  ghcr.io/mslycn/wyoming-sherpa-onnx:main
 ~~~
 
 
