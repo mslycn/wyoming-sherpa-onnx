@@ -2,6 +2,8 @@
 
 custom wyoming stt server for developer
 
+The image  is built on Debian 12 (bookworm-slim) with sherpa-onnx and integrates the asr mode SenseVoiceSmall onnx(FP32) ：sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.
+
 基于 sherpa-onnx 和 funasr 预训练模型SenseVoiceSmall 的 wyoming stt server。
 
 项目组合Wyoming 协议、Sherpa-ONNX 引擎 和 FunASR onnx模型。
