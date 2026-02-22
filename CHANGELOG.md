@@ -1,4 +1,6 @@
+20260222
 
+rename from wyoming-funasr-onnx to wyoming-sherpa-onnx
 
 20250206
 
