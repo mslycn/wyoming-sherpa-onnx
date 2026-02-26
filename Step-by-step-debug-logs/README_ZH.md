@@ -1,8 +1,12 @@
-- step 01. 实现wyoming协议框架
+- step 01. 实现wyoming协议框架 - mini Wyoming STT Server
+
+HA 不可连接的 Wyoming STT Server 示例
 
 Source code is available at  https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/serverv01_onlyWyoming%20Protocol%20version%201.8.0.py
 
-- step 02.处理Describe Event，使其能被home assistant wyoming integration 添加 
+- step 02.处理Describe Event，使其能被home assistant wyoming integration 添加
+
+HA 可连接的 Wyoming STT Server 示例
 
 Source code is available at https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/serverv02_onlyWyoming%20Protocol%20version%201.8.0.py
 
