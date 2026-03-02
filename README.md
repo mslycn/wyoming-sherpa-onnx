@@ -6,6 +6,7 @@ Wyoming Sherpa ONNX is a lightweight Speech-to-Text (STT) server that bridges Fu
 
 It provides fast, local, and privacy-friendly speech recognition powered by FunASR ONNX models.
 
+
 ## Features
 
 - Full Wyoming protocol compliance
@@ -15,6 +16,13 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 - ASREngine: CPU-only version of sherpa-onnx
 
 - Models: For Chinese users FunASR ONNX models->SenseVoiceSmall->sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+
+## Environment
+
+- ASREngine
+  sherpa-onnx
+- Models
+  - sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
   
 
 ## Prerequisites
