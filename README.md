@@ -48,6 +48,11 @@ It provides fast, local, and privacy-friendly speech recognition powered by FunA
 
 ~~~
 
+~~~
+User speaks → ESP32 (INMP441 mic) → WiFi → HA Server → Wyoming Sherpa ONNX Server (STT)
+    → LLM → TTS → HA Server →Piper(TTS）→ WiFi → ESP32 (MAX98357A) → Speaker
+~~~
+
 ## Project structre
 ~~~
 wyoming-sherpa-onnx/
