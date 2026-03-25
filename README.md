@@ -4,7 +4,16 @@ Wyoming protocol server for the funasr speech to text system.
 
 Wyoming Sherpa ONNX is a lightweight Speech-to-Text (STT) server that bridges FunASR ONNX models with the Wyoming protocol, enabling seamless integration with Home Assistant voice assistant.
 
+## What is wyoming-sherpa-onnx stt server?
+
 It provides fast, local, and privacy-friendly speech recognition powered by FunASR ONNX models.
+
+It consists of two parts:
+
+1. Wyoming protocol server – A lightweight Speech-to-Text (STT) serverfor Home Assistant
+
+2.Models – FunASR ONNX models for smart home control
+
 
 
 ## Features
