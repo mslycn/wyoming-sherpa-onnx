@@ -123,7 +123,9 @@ docker run -d \
 
 ~~~
 
-step 4. Integration with Home Assistant 
+step 4. Integration Method
+
+Wyoming protocol Integration with Home Assistant 
 
 step 5. Voice Assistant
 
