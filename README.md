@@ -12,7 +12,7 @@ It consists of two parts:
 
 1. Wyoming protocol server – A lightweight Speech-to-Text (STT) serverfor Home Assistant
 
-2.Models – FunASR ONNX models for smart home control
+2. Models – FunASR ONNX models for smart home control
 
 
 
