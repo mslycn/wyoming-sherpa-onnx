@@ -123,6 +123,8 @@ docker run -d \
 
 ~~~
 
+Start  the server to expose an endpoint, for example, http://127.0.0.1:10300, for Home Assistant to connect to.
+
 step 4. Integration Method
 
 Wyoming protocol Integration with Home Assistant 
