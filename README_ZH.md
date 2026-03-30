@@ -2,6 +2,10 @@
 
 custom wyoming stt server for developer
 
+## 核心流程
+
+使用Python读取esp32-s3-box3b语音数据并解析出文本，核心流程包括：使用sherpa-onnx加载语音模型，用第三方库解析语音流二进制文件，利用语音模型推理语音流数据获取文本，发送给HA实现其他自动化。
+
 The image  is built on Debian 12 (bookworm-slim) with sherpa-onnx and integrates the asr mode SenseVoiceSmall onnx(FP32) ：sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.
 
 基于 sherpa-onnx 和 funasr 预训练模型SenseVoiceSmall 的 wyoming stt server。
