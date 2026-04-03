@@ -32,6 +32,28 @@ It consists of two parts:
   sherpa-onnx
 - Models
   - sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
+ 
+~~~
+
+voice（ESP32）
+    ↓
+Assist Pipeline
+    ↓
+STT（Whisper / Sherpa）-> i am here.
+    ↓
+LLM（LiteLLM）
+    ├─ Ollama（local）
+    └─ GitHub Models（fallback）
+    ↓
+Agent（）
+    ↓
+Home Assistant Services
+    ↓
+excute 
+    ↓
+TTS（Piper）
+
+~~~
   
 
 ## Prerequisites
