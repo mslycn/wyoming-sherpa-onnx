@@ -184,8 +184,11 @@ docker run -d \
   ghcr.io/mslycn/wyoming-sherpa-onnx:main
 ~~~
 
+## Developer Documentation
 
-## Dockerfile
+Please view the [documentation guide](https://github.com/mslycn/wyoming-sherpa-onnx/tree/main/docs) for details.
+
+### Dockerfile
 
 Install system dependencies
 
