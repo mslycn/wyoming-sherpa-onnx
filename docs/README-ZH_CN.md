@@ -1,7 +1,32 @@
 
-# Sherpa-ONNX wyoming协议语音识别服务器for home assistant
+# Sherpa-ONNX wyoming协议语音识别服务器 for home assistant
 
 custom wyoming stt server for developer
+
+功能概述:
+  1. 每日 21:00 自动从巨潮资讯网(cninfo.com.cn) 获取全 A 股减持类公告
+  2. 正则表达式从公告标题 + 摘要中提取关键业务字段
+  3. 融合 AKShare 实时行情数据（总市值、最新收盘价）
+  4. 输出格式化 Excel 报表，含汇总统计 Sheet
+
+安装依赖 (install dependencies):
+  pip install akshare pandas requests openpyxl schedule pdfplumber beautifulsoup4 lxml
+
+可选增强 (optional):
+  - pdfplumber: 解析公告 PDF 正文，提取更完整的字段
+  - beautifulsoup4 + lxml: 解析 HTML 摘要
+
+字段提取逻辑说明 (见底部文档块):
+  详见模块 __doc__ 末尾的 "字段提取策略" 说明。
+
+运行方式:
+  python reduction_scraper.py --mode run          # 立即执行今日
+  python reduction_scraper.py --mode run --date 2025-01-15  # 指定日期
+  python reduction_scraper.py --mode daemon       # 守护进程（每日21:00）
+  python reduction_scraper.py --mode test         # 测试模式
+
+作者: AI Financial Data Engineer
+版本: 2.0.0
 
 ## 核心流程
 
