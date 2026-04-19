@@ -98,7 +98,7 @@ TTS（Piper）
 
 
 ~~~
-
+STT and TTS connected in HA via Wyoming Protocol Integration.
 
 ## System Architecture
 
