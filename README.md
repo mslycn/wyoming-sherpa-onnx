@@ -64,6 +64,8 @@ TTS（Piper）
 
 ## Voice assistant architecture
 
+Stt server can be connected to Home Assistant using the Wyoming protocol.
+
 ~~~
             ┌────────────────────────────────────────────────────────────────┐
             │                                                                │
