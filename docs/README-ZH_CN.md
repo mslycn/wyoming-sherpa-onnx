@@ -4,29 +4,34 @@
 custom wyoming stt server for developer
 
 功能概述:
-  1. 每日 21:00 自动从巨潮资讯网(cninfo.com.cn) 获取全 A 股减持类公告
-  2. 正则表达式从公告标题 + 摘要中提取关键业务字段
-  3. 融合 AKShare 实时行情数据（总市值、最新收盘价）
-  4. 输出格式化 Excel 报表，含汇总统计 Sheet
+  1. 将语音推理为文本输出
+  2. 使用sherpa-onnx作为asr推理引擎
+  3. 支持wyoming协议
+  4. 使用阿里云enseVoiceSmall FP32 onnx模型
 
-安装依赖 (install dependencies):
-  pip install akshare pandas requests openpyxl schedule pdfplumber beautifulsoup4 lxml
+依赖包说明 (install dependencies):
+  
+   sherpa-onnx: asr推理引擎
 
-可选增强 (optional):
-  - pdfplumber: 解析公告 PDF 正文，提取更完整的字段
-  - beautifulsoup4 + lxml: 解析 HTML 摘要
+   wyoming： wyoming协议库
 
-字段提取逻辑说明 (见底部文档块):
-  详见模块 __doc__ 末尾的 "字段提取策略" 说明。
+   numpy : 音频处理库
+
+可选增强 (VAD):
+  - VAD     ： silero-vad
+  - AudioChunk：检测到人声停止后，提前中断语音
+
+从0开始调式过程说明 (见底部文档块):
+  详见模块[Step-by-step-debug-logs](https://github.com/mslycn/wyoming-sherpa-onnx/tree/main/Step-by-step-debug-logs) 说明。
 
 运行方式:
-  python reduction_scraper.py --mode run          # 立即执行今日
-  python reduction_scraper.py --mode run --date 2025-01-15  # 指定日期
-  python reduction_scraper.py --mode daemon       # 守护进程（每日21:00）
-  python reduction_scraper.py --mode test         # 测试模式
+  python3 serverv01_onlyWyoming Protocol version 1.8.0.py           # 测试Wyoming Protocol框架
+  python3 serverv02_onlyWyoming Protocol version 1.8.0.py           # 测试添加到ha
+  python3 step1-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.py      # 测试加载FP16模型
+  python3 step2-server2-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.py        #     测试加载FP32精度模型
 
-作者: AI Financial Data Engineer
-版本: 2.0.0
+作者: mslycn
+版本: 1.0.0
 
 ## 核心流程
 
