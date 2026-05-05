@@ -270,3 +270,7 @@ AudioChunk Event
 
 https://github.com/ptbsare/sherpa-onnx-tts-stt
 
+- Wyoming protocol server and client examples
+
+https://julianbei.github.io/wyoming/07-examples/#intent-recognition
+
