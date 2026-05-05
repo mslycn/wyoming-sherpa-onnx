@@ -25,11 +25,12 @@ custom wyoming stt server for developer
   详见模块[Step-by-step-debug-logs](https://github.com/mslycn/wyoming-sherpa-onnx/tree/main/Step-by-step-debug-logs) 说明。
 
 运行方式:
+~~~
   python3 serverv01_onlyWyoming Protocol version 1.8.0.py           # 测试Wyoming Protocol框架
   python3 serverv02_onlyWyoming Protocol version 1.8.0.py           # 测试添加到ha
   python3 step1-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.py      # 测试加载FP16模型
   python3 step2-server2-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.py        #     测试加载FP32精度模型
-
+~~~
 作者: mslycn
 版本: 1.0.0
 
