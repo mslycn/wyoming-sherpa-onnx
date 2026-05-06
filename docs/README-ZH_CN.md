@@ -3,6 +3,8 @@
 
 custom wyoming stt server for developer
 
+在树莓派 5 (8GB) 这种性能级别的设备上，sherpa-onnx 运行 FunASR 转换后的 ONNX 模型是目前中文语音识别（ASR）的最佳途径。
+
 功能概述:
   1. 将语音推理为文本输出
   2. 使用sherpa-onnx作为asr推理引擎
