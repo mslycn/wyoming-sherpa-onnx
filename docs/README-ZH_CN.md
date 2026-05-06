@@ -537,11 +537,16 @@ Download silero-vad
 
 Speech recognition from a microphone with VAD
 
+## 下载模型
+
+1. 直接从 k2-fsa 的 Huggingface 仓库下载
 ~~~
 silero_vad.onnx- exported： by k2-fsa https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
 silero_vad v5： wget https://github.com/snakers4/silero-vad/raw/refs/tags/v5.0/files/silero_vad.onnx
 ~~~
 source：https://k2-fsa.github.io/sherpa/onnx/vad/silero-vad.html#download-models-files
+
+2. 自己使用sherpa-onnx 官方提供的脚本从 FunASR 仓库转 ONNX
 
 FunASR 官方支持使用 funasr-export 工具将模型导出为 ONNX 格式
 
