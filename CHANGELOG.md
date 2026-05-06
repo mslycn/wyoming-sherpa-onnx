@@ -1,3 +1,20 @@
+202605
+
+sherpa-onnx + FunASR 1.5 vs sherpa-onnx + FunASR 1.3（同样都转ONNX）
+
+1. 比较：FunASR  1.5 vs FunASR  1.3
+
+两者都支持转成 ONNX 在 sherpa-onnx 中运行，但 1.5 版本（对应阿里最新的 Paraformer-v2 或 SenseVoiceSmall 系列）有以下显著提升：
+
+- 识别精度（WER）： 1.5 版本在大噪声环境和口音识别上的鲁棒性明显优于 1.3。
+
+- 端到端延迟： 1.5 的模型结构在 sherpa-onnx 内部做了更深度的算子优化，尤其是在处理“长句自动断句”时，反应比 1.3 更快。
+
+- 情感与事件检测（针对 SenseVoiceSmall）： 使用FunASR 1.5 体系下的 SenseVoiceSmall，不仅能识别文字，还能识别背景噪声（如：[Music]、[Laughter]）和情感，对于 Home Assistant 语音助手非常有帮助。
+
+
+
+
 20260222
 
 rename from wyoming-funasr-onnx to wyoming-sherpa-onnx
