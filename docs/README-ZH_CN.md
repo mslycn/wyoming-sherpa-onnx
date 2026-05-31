@@ -576,5 +576,8 @@ useful links
 
 FunASR Documentation:https://www.funasr.com/
 
+FunASR Models:[https://www.funasr.com/](https://github.com/modelscope/FunASR)
+
+
 
 
