@@ -4,7 +4,7 @@
 wyoming==1.8.0
 
 # herpa-onnx
-sherpa-onnx 
+sherpa-onnx==1.12.23
 sherpa-onnx-bin
 
 # Audio Processing
