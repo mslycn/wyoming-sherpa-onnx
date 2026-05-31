@@ -578,6 +578,8 @@ FunASR Documentation:https://www.funasr.com/
 
 FunASR Models:[https://github.com/modelscope/FunASR](https://github.com/modelscope/FunASR)
 
+https://modelscope.github.io/FunASR/
+
 
 
 
