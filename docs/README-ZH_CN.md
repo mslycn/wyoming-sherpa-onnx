@@ -572,5 +572,9 @@ model_dir = snapshot_download('xiaowangge/sherpa-onnx-sense-voice-small')
 
 ~~~
 
+useful links
+
+FunASR Documentation:https://www.funasr.com/
+
 
 
