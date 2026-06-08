@@ -253,6 +253,11 @@ Install the Python package sherpa-onnx
 
 https://k2-fsa.github.io/sherpa/onnx/python/install.html#method-1-from-pre-compiled-wheels-cpu-only
 
+- sherpa-onnx version
+
+https://github.com/k2-fsa/sherpa-onnx/releases
+
+
 - download model (sense-voice small)
 
 https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models
