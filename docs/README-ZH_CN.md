@@ -580,6 +580,10 @@ FunASR Models:[https://github.com/modelscope/FunASR](https://github.com/modelsco
 
 https://modelscope.github.io/FunASR/
 
+- Sherpa-ONNX 最新稳定版 1.13.2，发布于 2026-05-13
+
+https://github.com/k2-fsa/sherpa-onnx/releases?utm_source=chatgpt.com
+
 
 
 
