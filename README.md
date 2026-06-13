@@ -244,7 +244,19 @@ pip3 install wyoming==1.8.0
 pip3 install numpy==2.4.2
 ~~~
 
+### changelog
 
+20260605
+~~~
+
+2026-06-13 23:34:04.746 - INFO - wyoming-funasr-onnx - Sherpa-ONNX Version: 1.12.23
+2026-06-13 23:34:04.746 - INFO - wyoming-funasr-onnx - 2026-06-13 23:34:04.746 - start excute sherpa-onnx
+2026-06-13 23:34:04.746 - INFO - wyoming-funasr-onnx - Loading Sherpa-ONNX model from /sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
+加载模型SenseVoiceSmall耗时 7688.25 毫秒
+2026-06-13 23:34:12.435 - INFO - wyoming-funasr-onnx - Wyoming Sherpa-ONNX Server started on port 10900
+
+
+~~~~
 
 
 useful links
