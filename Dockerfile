@@ -2,6 +2,9 @@
 FROM debian:bookworm-slim
 ARG TARGETARCH
 ARG TARGETVARIANT
+ARG APP_VERSION=0.0.1
+ARG VCS_REF=""
+ARG BUILD_DATE=""
 
 WORKDIR /app 
 
@@ -38,6 +41,11 @@ COPY server.py .
 
 # Create directories
 RUN mkdir -p /data  /data/models /data/models/vad
+
+# metadata：便于追踪镜像版本和源码
+LABEL org.opencontainers.image.version=${APP_VERSION} \
+      org.opencontainers.image.revision=${VCS_REF} \
+      org.opencontainers.image.created=${BUILD_DATE}
 
 # 暴露端口
 EXPOSE 10300
