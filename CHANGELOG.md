@@ -1,130 +1,35 @@
-202605
+Technical Log: Wyoming-Sherpa-ONNX Integration
 
-sherpa-onnx + FunASR 1.5 vs sherpa-onnx + FunASR 1.3（同样都转ONNX）
-
-1. 比较：FunASR  1.5 vs FunASR  1.3
-
-两者都支持转成 ONNX 在 sherpa-onnx 中运行，但 1.5 版本（对应阿里最新的 Paraformer-v2 或 SenseVoiceSmall 系列）有以下显著提升：
-
-- 识别精度（WER）： 1.5 版本在大噪声环境和口音识别上的鲁棒性明显优于 1.3。
-
-- 端到端延迟： 1.5 的模型结构在 sherpa-onnx 内部做了更深度的算子优化，尤其是在处理“长句自动断句”时，反应比 1.3 更快。
-
-- 情感与事件检测（针对 SenseVoiceSmall）： 使用FunASR 1.5 体系下的 SenseVoiceSmall，不仅能识别文字，还能识别背景噪声（如：[Music]、[Laughter]）和情感，对于 Home Assistant 语音助手非常有帮助。
-
-
-
-
-20260222
-
-rename from wyoming-funasr-onnx to wyoming-sherpa-onnx
-
-20250206
-
-## 使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型  FP16 / INT8
-
-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
-
-准确率低
-
-int8 量化会将 32 位的浮点数压缩到 8 位，虽然速度飞快，但在中文这种同音词、近音词极多的语言里，会丢失音调的细微特征（这就是为什么“火”会变成“花”）。
-
-
-20260205 
-
-## Hard-coded model dir for docker run test
-
-不改动 server.py 的代码，在启动 Docker 时，把宿主机的模型目录“伪装”成server.py内的模型目录路径，直接测试。 run test ok  20260205
-
-servery.py 直接使用 外部目录测试 MODEL_DIR = "/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09"
-
-Hard-coded
-
-run ok  20260205
-直接将缩主机物理目录/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09 映射为docker 内的/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09  目录，进行测试
-~~~
-docker run -d \
-  --name "funasr" \
-  -v /funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09:/funasr-wyoming-sherpa-onnx/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09 \
-  -p 10900:10900 \
-  ghcr.io/mslycn/wyoming-funasr-onnx:main
-~~~
-
-
-
-error
-
-- RuntimeError: No graph was found in protobuf
-
-模型文件路径设置错误
-
-
-run ok
-
-源文件：https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step1-server1-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.py
-
-
-
-## 20250207 调整为使用FP32精度模型(量化版)
-
-### Old
-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
-
-### New
-
-sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09    模型 FP32 / INT16精度模型
-
-发现识别准确率 不及 原生 funasr。经查，使用sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09模型，音频精度被转换成了8位。造成开火，成开活，等。
-
-决定调整为FP32精度模型
-
-sherpa-onnx-sense-voice-zh-en-ja-ko-yue2025-09-09
-
-run ok
-
-https://github.com/mslycn/wyoming-funasr-onnx/blob/main/Step-by-step-debug-logs/step2-server2-sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09.py
-
-server.py
-
-https://github.com/mslycn/wyoming-funasr-onnx/commit/a62a07064356108470b85c46d97993a6d6c99678
-
-##  20260608  AudioChunk.is_type(event.type):  AudioChunk 处理函数中做vad检查
-
-在 AudioChunk 阶段做 VAD 是解决“识别不准”和“响应慢”的方案。
-
-在树莓派 5 上，使用 sherpa-onnx 官方支持的 Silero VAD。它是一个专门检测“人声”的轻量级深度学习模型。
-
-推理引擎 ：sherpa-onnx
-
-推理模型 ：SenseVoiceSmall ONNX 
-
-VAD      : Silero VAD      
-
-https://github.com/mslycn/wyoming-funasr-onnx/commit/93a282738d903331f00573612e6d767f07b734e0
-
-
-
-## 使用 sherpa-onnx 的端点检测 (Endpointing)  Silero VAD + 能量辅助
-
-原理：每次收到 AudioChunk 时，都会实时检测音频。如果连续 500ms 没有人声，就提前结束录音并执行识别。
-
-需要从 sherpa-onnx 仓库（https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models） 下载 silero_vad.onnx
+## June 2026: Audio Chunk Management & Silero VAD Integration
+Implementing VAD (Voice Activity Detection) during the AudioChunk phase is a highly effective strategy to address low recognition accuracy and slow response latencies.
 
 ~~~
-cd /your/model/path
-wget https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
+Deployment Environment: Raspberry Pi 5 (8GB RAM)
+
+Inference Engine: sherpa-onnx
+
+Inference Model: SenseVoiceSmall ONNX (FP32/INT16 Precision)
+
+VAD Model: Silero VAD (A lightweight, specialized deep learning model for human speech detection)
+
 ~~~
 
-VAD 建议设置 500ms 到 800ms 的静音阈值。太短（比如 200ms）可能会在你说话停顿换气时误断。
+## February 22, 2026: Repository Maintenance
 
-内存占用：RPi5 8G 运行这两个模型（SenseVoice + Silero VAD）总共约占 1.5GB 左右内存
+Refactoring Action: Renamed the local wrapper repository from wyoming-funasr-onnx to wyoming-sherpa-onnx to correctly match the underlying runtime dependency.
 
+## February 7, 2025: Transition to Higher Precision Weights
 
+Observed Issue: The downstream text output accuracy fell noticeably short of native FunASR server implementations. The INT8 quantization steps stripped necessary tonal characteristics crucial for tonal languages like Chinese, leading to critical homophone errors (e.g., mapping command tokens like "开火" [Kai Huo] into "开活" [Kai Huo]).
 
-### Sherpa-ONNX 最新版本
+Remediation: Shifted system configuration to prioritize higher precision weights.
 
-Sherpa-ONNX 最新稳定版是 1.13.2，发布于 2026-05-13。
+Target Asset Model Matrix: sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09 (FP32 / INT16 Precision)
 
-https://github.com/k2-fsa/sherpa-onnx/releases
+Reference Scripts: Step 2 High Precision Script Source | Commit a62a070
 
+## February 6, 2025: Initial Quantization Evaluation
 
+Initial Quantization Target Asset: sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09
+
+Technical Constraint: INT8 quantization compresses standard 32-bit floating-point numbers into 8-bit integers. While processing speed scales up drastically, it sacrifices granular audio frequency data, leading to degraded word error rates on homophones and pitch inflections.
