@@ -215,8 +215,7 @@ class CustomSTTHandler(AsyncEventHandler):
                 # 如果检测到用户停止说话，主动发送一个 AudioStop 事件来触发最终识别结果返回
                 # await self.write_event(AudioStop().event())
            
-            self.was_speaking = False
-
+            
             currently_speaking = self.vad.is_speech_detected()
 
             _LOGGER.info(f"Speech State: {currently_speaking}")
