@@ -5,7 +5,11 @@ on:
     branches: [ "main" ]
     paths:
       - 'Dockerfile'
-      - 'server.py'      
+      - 'server.py'  
+
+# 直接定义版本号
+env:
+  APP_VERSION: "v1.0.0"      
 
 
 jobs:
@@ -49,7 +53,7 @@ jobs:
         push: true
         tags: |
           ghcr.io/${{ github.repository_owner }}/wyoming-funasr-onnx:latest
-          ghcr.io/${{ github.repository_owner }}/wyoming-funasr-onnx:${{ github.ref_name }}
+          ghcr.io/${{ github.repository_owner }}/wyoming-funasr-onnx:${{ env.APP_VERSION }}
 
     # GitHub Actions 里调试容器退出
     - name: Run container
