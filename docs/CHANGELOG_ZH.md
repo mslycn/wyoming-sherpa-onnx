@@ -1,3 +1,9 @@
+202607
+
+update to Sherpa-ONNX Version: 1.13.4
+
+
+
 
 202605
 
