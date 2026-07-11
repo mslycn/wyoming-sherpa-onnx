@@ -3,6 +3,10 @@
 
 custom wyoming stt server for developer
 
+## 说明
+
+这是一个基于 sherpa-onnx 的语音识别服务器，提供 Websocket API 接口进行语音识别服务。
+
 在树莓派 5 (8GB) 这种性能级别的设备上，sherpa-onnx 运行 FunASR 转换后的 ONNX 模型是目前中文语音识别（ASR）的最佳途径。
 
 功能概述:
