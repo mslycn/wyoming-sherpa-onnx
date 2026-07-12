@@ -220,15 +220,17 @@ class CustomSTTHandler(AsyncEventHandler):
 
             _LOGGER.info(f"Speech State: {currently_speaking}")
 
-            if self.vad.is_speech_detected():
+            if currently_speaking:
                  if not self.was_speaking:
-                      _LOGGER.info("Started speaking!")
+                      _LOGGER.info("User Started speaking!")
                       self.was_speaking = True
             else:
                   if not currently_speaking and self.was_speaking:
                         _LOGGER.info("User stopped speaking.")
                         # This is where you would trigger your STT or GPT response
-                        await self.write_event(AudioStop().event())
+                        stop_event = AudioStop().event()
+                        await self.handle_event(stop_event)
+                      
                         self.was_speaking = False
                         self.vad.reset()  # Optional: clear the buffer for the next sentence
   
