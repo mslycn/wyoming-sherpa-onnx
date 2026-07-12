@@ -45,19 +45,38 @@ from wyoming.info import (
 from wyoming.server import AsyncTcpServer, AsyncEventHandler
 
 
-# ---------------- 1. 日志设置 ----------------
-
 # ---------------- Logging ----------------
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s.%(msecs)03d - %(levelname)s - %(name)s - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
-_LOGGER = logging.getLogger("wyoming-funasr-onnx")
+_LOGGER = logging.getLogger("wyoming-funasr-onnx stt server")
 
+_LOGGER.info(f"========== Runtime Environment ==========")
+
+## --- 系统与硬件信息 (OS & CPU) ---
+_LOGGER.info(f"OS Type: {os.name}")
+_LOGGER.info(f"Platform: {platform.platform()}")
+_LOGGER.info(f"System: {platform.system()} {platform.release()}")
+_LOGGER.info(f"Architecture: {platform.machine()}")
+_LOGGER.info(f"CPU Processor: {platform.processor()}")
+_LOGGER.info(f"Python Version: {sys.version.split()[0]}")
+
+## --- 库版本信息 (Packages) ---
+import pip
+_LOGGER.info(f"Pip Version: {pip.__version__}")
 
 import sherpa_onnx
 _LOGGER.info(f"Sherpa-ONNX Version: {sherpa_onnx.__version__}")
+
+from importlib.metadata import version
+_LOGGER.info(f"Wyoming Version: {version('wyoming')}")
+
+_LOGGER.info(f"Numpy  Version: {np.__version__}")
+
+_LOGGER.info(f"========================================")
+
 
 
 # ---------------- 2. 初始化 Sherpa-ONNX----------------
