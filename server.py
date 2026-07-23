@@ -17,10 +17,12 @@ step 2. server.py
 from funasr_onnx import SenseVoiceSmall
 
 """
-
 import os
 import asyncio
 import io
+
+import platform
+import sys
 
 import numpy as np
 import logging
