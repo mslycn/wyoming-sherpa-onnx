@@ -136,7 +136,9 @@ class CustomSTTHandler(AsyncEventHandler):
         super().__init__(*args, **kwargs)
         self.audio_buffer = bytearray()
 
+        # 推理完成标志
         self.processed = False
+        
         # 1. 初始化 VAD (使用 sherpa_onnx 内置的 Silero VAD)
         # 需确保 MODEL_DIR 下有 silero_vad.onnx
  
@@ -208,7 +210,7 @@ class CustomSTTHandler(AsyncEventHandler):
  
             self.audio_buffer.clear()
 
-            # add vad: step 2
+            # 推理完成标志
             self.processed = False
             self.vad.reset()
  
