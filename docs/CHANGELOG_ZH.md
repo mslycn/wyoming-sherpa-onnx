@@ -2,6 +2,25 @@
 
 update to Sherpa-ONNX Version: 1.13.4
 
+~~~
+2026-07-23 18:45:49.511 - INFO - wyoming-funasr-onnx stt server - ========== Runtime Environment ==========
+2026-07-23 18:45:49.512 - INFO - wyoming-funasr-onnx stt server - OS Type: posix
+2026-07-23 18:45:49.513 - INFO - wyoming-funasr-onnx stt server - Platform: Linux-6.12.75+rpt-rpi-2712-aarch64-with-glibc2.36
+2026-07-23 18:45:49.513 - INFO - wyoming-funasr-onnx stt server - System: Linux 6.12.75+rpt-rpi-2712
+2026-07-23 18:45:49.513 - INFO - wyoming-funasr-onnx stt server - Architecture: aarch64
+2026-07-23 18:45:49.513 - INFO - wyoming-funasr-onnx stt server - CPU Processor: 
+2026-07-23 18:45:49.513 - INFO - wyoming-funasr-onnx stt server - Python Version: 3.11.2
+2026-07-23 18:45:49.513 - INFO - wyoming-funasr-onnx stt server - Pip Version: 23.0.1
+2026-07-23 18:45:49.525 - INFO - wyoming-funasr-onnx stt server - Sherpa-ONNX Version: 1.13.4
+2026-07-23 18:45:49.526 - INFO - wyoming-funasr-onnx stt server - Wyoming Version: 1.8.0
+2026-07-23 18:45:49.526 - INFO - wyoming-funasr-onnx stt server - Numpy  Version: 2.4.6
+2026-07-23 18:45:49.526 - INFO - wyoming-funasr-onnx stt server - ========================================
+2026-07-23 18:45:49.526 - INFO - wyoming-funasr-onnx stt server - 2026-07-23 18:45:49.526 - start excute sherpa-onnx
+2026-07-23 18:45:49.526 - INFO - wyoming-funasr-onnx stt server - Loading Sherpa-ONNX model from /sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2025-09-09
+
+
+~~~
+
 
 
 
