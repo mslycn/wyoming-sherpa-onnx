@@ -157,6 +157,11 @@ class CustomSTTHandler(AsyncEventHandler):
 
         self.was_speaking = False
 
+        # 人声持续时间计数
+        self.speech_detected_counter = 0
+        # 静音持续时间计数
+        self.silence_detected_counter = 0
+
     async def handle_event(self, event: Event) -> bool:
         """Handle Wyoming protocol events"""
 
@@ -239,7 +244,7 @@ class CustomSTTHandler(AsyncEventHandler):
             
             currently_speaking = self.vad.is_speech_detected()
 
-            _LOGGER.info(f"Speech State: {currently_speaking}")
+            # _LOGGER.info(f"Speech State: {currently_speaking}")
 
             if currently_speaking:
                  if not self.was_speaking:
@@ -254,6 +259,28 @@ class CustomSTTHandler(AsyncEventHandler):
                       
                         self.was_speaking = False
                         self.vad.reset()  # Optional: clear the buffer for the next sentence
+
+            # 静音持续时间
+            if not currently_audio_chunk_is_speaking:
+                  self.silence_detected_counter += 1
+                  self.speech_detected_counter = 0
+
+            # 日志降频：使用了 % 30 或 % 100 来控制日志显示频率。Wyoming 的 Chunk 发送非常快，如果不降频，满屏日志。
+            if self.silence_detected_counter >0 and self.silence_detected_counter % 100 == 0:
+                  _LOGGER.info(f"AudioChunk Event received.静音已累积 {self.silence_detected_counter} 个")
+
+            # 人声持续时间
+            if currently_audio_chunk_is_speaking:
+                  self.speech_detected_counter += 1
+                  self.silence_detected_counter = 0
+    
+
+            if self.speech_detected_counter == 1 :
+                  _LOGGER.info(f"AudioChunk Event received.user Started speaking...")
+
+
+            if self.speech_detected_counter >0 and self.speech_detected_counter % 10 == 0:
+                  _LOGGER.info(f"AudioChunk Event received.人声已累积 {self.speech_detected_counter} 个")            
   
             return True
 
